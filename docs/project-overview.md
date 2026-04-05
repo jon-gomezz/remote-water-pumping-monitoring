@@ -1,397 +1,217 @@
-# Architecture
+# Project Overview
 
-## Architecture Summary
+## Summary
 
-The system follows an industrial IoT architecture designed to move operational data from remote water pumping stations to a centralized monitoring environment in Araka.
+This project documents the design of an industrial IoT monitoring system for remote water pumping stations connected to the water supply network of Vitoria-Gasteiz. The main purpose of the solution was to centralize the supervision of distributed installations, improve visibility over field assets, and reduce the operational limitations of relying only on local monitoring or manual inspections.
 
-At each station, field signals are collected by a Siemens S7-1200 PLC. These data are exposed through Modbus RTU over RS485 and read by a Dragino RS485-LN device, which converts the information into LoRaWAN messages for long-range wireless transmission. The LoRaWAN traffic is received by a The Things Indoor Gateway (TTIG) and managed through The Things Network (TTN). From there, data are forwarded via MQTT to Node-RED, where they are decoded, processed, and displayed in dashboards. Finally, processed data are sent to ThingSpeak for storage, historical visualization, and additional analysis.
+The system combines industrial automation components and lightweight communication technologies. At station level, Siemens S7-1200 PLCs acquire digital and analog signals from field devices. These data are exposed through Modbus RTU over RS485 and sent through Dragino RS485-LN LoRaWAN communication devices. The information is then managed through The Things Network (TTN), transported using MQTT, visualized in Node-RED, and stored or analyzed through ThingSpeak.
 
-## High-Level Data Flow
+This repository presents a portfolio-oriented reconstruction of that engineering work. Sensitive operational details, credentials, and internal production configurations are intentionally omitted or sanitized.
 
-```text
-Field signals
-  -> Siemens S7-1200 PLC
-  -> Modbus RTU over RS485
-  -> Dragino RS485-LN
-  -> LoRaWAN
-  -> TTIG gateway
-  -> The Things Network (TTN)
-  -> MQTT
-  -> Node-RED in Araka
-  -> ThingSpeak
-```
+## Context
 
-## System Layers
+Water infrastructure is often composed of geographically dispersed pumping stations, storage points, and control elements. These installations may include pumps, tank level measurement, pressure monitoring, flow monitoring, and water quality variables such as chlorine concentration. In many cases, the difficulty is not only measuring the process variables, but integrating them into a centralized monitoring system that is technically viable, scalable, and economically reasonable.
 
-### 1. Field Layer
+The project was developed in the context of an internship and focused on the communication and monitoring needs of remote stations belonging to the water supply system. The goal was not simply to acquire signals locally, but to design a complete communication chain from field instrumentation to supervisory visualization.
 
-The field layer contains the process signals coming from each pumping station. Depending on the station, these signals may include:
+## Main Problem
+
+Before this solution, remote stations depended more heavily on local systems and physical checks. That makes response times slower, complicates the detection of incidents, and reduces the ability to supervise several installations from a single point.
+
+The engineering challenge was to create a system capable of:
+
+* Acquiring operational variables from remote stations.
+* Transmitting data over long distances.
+* Integrating industrial automation hardware with IoT communication layers.
+* Presenting the information in a central interface.
+* Defining a structure that could be replicated across additional stations.
+
+## Project Objectives
+
+The project objectives were the following:
+
+* Centralize the monitoring of several remote water pumping stations.
+* Capture both digital and analog industrial signals.
+* Use a long-range and low-power communication approach.
+* Create a practical bridge between field instrumentation and cloud or supervisory tools.
+* Support future integration with SCADA-style environments.
+* Establish a reusable architecture for similar remote installations.
+
+## Solution Scope
+
+The solution was conceived as an end-to-end monitoring architecture covering the following layers:
+
+* **Field layer:** sensors, pump-related signals, and process variables.
+* **Control layer:** Siemens PLC-based signal acquisition and internal variable mapping.
+* **Communication layer:** Modbus RTU over RS485 and LoRaWAN transmission.
+* **Network and transport layer:** TTN and MQTT-based message flow.
+* **Visualization layer:** Node-RED dashboards and ThingSpeak cloud views.
+
+This scope made the project more than a simple automation exercise. It became a systems integration project involving industrial control, communications, data transport, and visualization.
+
+## Stations and Operational Variables
+
+Depending on the station, the monitored information could include:
 
 * Pump running status.
 * Pump fault status.
 * Tank level.
 * Well level.
-* Pressure.
-* Flow.
-* Chlorine-related variables.
+* Line or suction pressure.
+* Flow rate.
+* Chlorine concentration.
 
-These signals represent the operational state of each remote installation and are the starting point of the monitoring chain.
+A key part of the engineering work was not only capturing those variables, but structuring them in a consistent way so that the same communication logic could be reused across different stations.
 
-### 2. Control Layer
+## Why This Architecture Was Relevant
 
-Each station is built around a Siemens S7-1200 PLC. The PLC is responsible for:
+This architecture was technically attractive because it balanced several requirements at once:
 
-* Acquiring digital and analog signals.
-* Organizing variables internally.
-* Exposing the relevant data for communication.
+* Industrial robustness through PLC-based acquisition.
+* Communication over geographically distributed sites.
+* Reduced deployment complexity compared with heavier alternatives.
+* Support for multiple remote stations.
+* Periodic updates suitable for operational monitoring.
+* Future scalability.
 
-The PLC provides the industrial robustness of the system and acts as the local control and acquisition unit at station level.
+In other words, the project was designed not just to make one station visible, but to define a monitoring approach that could be extended.
 
-### 3. Local Communication Layer
+## My Role
 
-The communication between the PLC and the LoRaWAN transmission device is based on Modbus RTU over RS485.
+My contribution focused on the engineering and integration side of the project. The work included:
 
-This layer serves as the bridge between industrial control hardware and the wireless communication system. In this project, the Dragino RS485-LN acts as the Modbus master and queries the PLC to retrieve the required values.
+* Understanding the operational needs of the stations.
+* Contributing to the communication architecture definition.
+* Participating in signal mapping and data structuring.
+* Working with PLC-centered acquisition logic.
+* Integrating Modbus and LoRaWAN communication layers.
+* Supporting the data flow toward TTN, MQTT, Node-RED, and ThingSpeak.
+* Participating in testing and validation.
 
-## LoRaWAN Communication Architecture
+## Main Outcome
 
-### 4. End Device Layer
+The project showed that it was feasible to build a centralized remote monitoring architecture for water infrastructure using a combination of industrial automation and IoT technologies. It established a functional basis for supervising field assets from a central point and demonstrated how PLC-based industrial systems can be connected to lightweight long-range communications and cloud visualization tools.
 
-The station-side communication endpoint is the Dragino RS485-LN. Its main role is to:
+Beyond the specific implementation, the project was also valuable as a practical example of industrial digitalization: it connected field devices, industrial protocols, wireless communications, dashboards, and cloud services into a coherent workflow.
 
-* Read station data through RS485.
-* Prepare the payload.
-* Transmit the information through LoRaWAN.
+## Repository Perspective
 
-This device makes it possible to connect conventional industrial equipment to a long-range wireless IoT network without redesigning the local control logic.
+This repository is intended to present the project from a portfolio and engineering documentation perspective. It focuses on:
 
-### 5. Gateway Layer
+* The problem that was solved.
+* The architecture that was selected.
+* The system integration logic behind the design.
+* The technologies involved.
+* The lessons that can be generalized to similar industrial IoT scenarios.
 
-The wireless transmission is received by a The Things Indoor Gateway (TTIG), which acts as the bridge between the radio network and the internet-connected backend.
-
-Its function is to receive LoRa radio packets from the remote stations and forward them to the network server.
-
-### 6. Network Server Layer
-
-The LoRaWAN network server is provided by The Things Network (TTN).
-
-In this architecture, TTN is responsible for:
-
-* Device registration.
-* Network management.
-* Packet routing.
-* Secure handling of LoRaWAN traffic.
-
-A relevant architectural decision in the project was to use a LoRaWAN setup with an independent network server rather than a gateway with an embedded server. This approach offered better flexibility and scalability for a multi-station deployment.
-
-## Data Processing and Visualization
-
-### 7. MQTT Transport Layer
-
-Once data reach TTN, they are forwarded through MQTT.
-
-MQTT is used as the transport mechanism between the network platform and the central monitoring environment. This keeps the integration lightweight and practical for IoT-oriented data flows.
-
-### 8. Monitoring and Visualization Layer
-
-Node-RED is the main visualization and data-handling platform in the central environment.
-
-Its responsibilities include:
-
-* Subscribing to MQTT topics.
-* Decoding incoming payloads.
-* Transforming the received data.
-* Distributing values to dashboard widgets.
-* Presenting station information in near real time.
-
-Node-RED was also a practical choice because it provided an accessible visual environment for building dashboards and interfacing with existing supervisory logic.
-
-### 9. Edge Host Layer
-
-Node-RED is hosted on an Orange Pi 3 LTS, which is used to keep the monitoring service running continuously.
-
-This component provides a lightweight computing platform for:
-
-* Continuous reception of station data.
-* Local dashboard serving.
-* Integration with downstream services.
-
-### 10. Storage and Analytics Layer
-
-ThingSpeak is used as the storage and cloud analytics layer.
-
-Its role in the architecture is to:
-
-* Store historical station data.
-* Support trend visualization,
-* Enable additional statistical analysis.
-* Serve as a base for alerts or future anomaly-oriented logic.
-
-This makes the overall solution more than a real-time dashboard: it also introduces a historical data perspective.
-
-## Why This Architecture Was Chosen
-
-The selected architecture was aligned with the operational and engineering constraints of the project.
-
-It was designed to provide:
-
-* Long-range communication at relatively low cost.
-* Compatibility with industrial equipment.
-* Centralized supervision of multiple remote stations.
-* Short refresh times for monitoring.
-* Scalability for future station additions.
-* Practical integration with monitoring tools.
-
-The resulting design balances industrial reliability at station level with lightweight IoT communication and visualization technologies.
-
-## Main Architectural Decisions
-
-### Industrial acquisition with PLCs
-
-The project uses PLC-based acquisition rather than fully consumer-grade IoT hardware. This improves robustness and makes the solution more credible for real infrastructure.
-
-### RS485 / Modbus as the local interface
-
-Using Modbus RTU over RS485 provides a simple and well-known industrial communication layer between acquisition and wireless transmission.
-
-### LoRaWAN for remote connectivity
-
-LoRaWAN was selected because the stations are geographically distributed and the project required long-range communication with low operating cost.
-
-### Independent network server model
-
-The system was designed around TTN as an external network server, which is more scalable than keeping the entire network logic inside a single gateway.
-
-### Node-RED as the central monitoring layer
-
-Node-RED offered a practical way to decode messages, build dashboards, and create a bridge toward supervisory environments.
-
-### ThingSpeak for historical data
-
-ThingSpeak added persistence, historical visualization, and a basis for alerting and further analysis.
-
-## Scalability Considerations
-
-The architecture was conceived as a reusable pattern rather than a one-off integration.
-
-Adding a new station would mainly require:
-
-* Deploying the station-side PLC and communication node.
-* Mapping the new signals.
-* Registering the new device in TTN.
-* Extending the Node-RED / ThingSpeak logic.
-
-This means the architecture can grow without changing its core communication model.
-
-## Limitations of the Architecture
-
-Although the architecture is practical and scalable, it also has some limitations:
-
-* It is focused on remote monitoring more than on full remote control.
-* Node-RED is highly practical but not the same as a full industrial SCADA platform.
-* MQTT and Node-RED security hardening would need special attention in a production-grade deployment.
-* The public portfolio version cannot include the original confidential infrastructure details.
-
-## Architecture Perspective in This Repository
-
-This repository documents the system from a portfolio and engineering communication perspective. It does not attempt to publish the original production setup in full detail. Instead, it explains the logic of the architecture, the responsibilities of each component, and the main decisions that made the solution viable for remote water station monitoring.
+It should be understood as a professional reconstruction of a real project rather than as a full publication of the original production environment.
 
 ---
 
-# Arquitectura
+# Descripción general del proyecto
 
-## Resumen de la arquitectura
+## Resumen
 
-El sistema sigue una arquitectura de IoT industrial diseñada para trasladar datos operativos desde estaciones remotas de bombeo de agua hasta un entorno centralizado de monitorización en Araka.
+Este proyecto documenta el diseño de un sistema de monitorización de IoT industrial para estaciones remotas de bombeo de agua conectadas a la red de abastecimiento de Vitoria-Gasteiz. El propósito principal de la solución era centralizar la supervisión de instalaciones distribuidas, mejorar la visibilidad sobre los activos de campo y reducir las limitaciones operativas de depender únicamente de la monitorización local o de inspecciones manuales.
 
-En cada estación, las señales de campo son recogidas por un PLC Siemens S7-1200. Estos datos se exponen mediante Modbus RTU sobre RS485 y son leídos por un dispositivo Dragino RS485-LN, que convierte la información en mensajes LoRaWAN para su transmisión inalámbrica de largo alcance. El tráfico LoRaWAN es recibido por un The Things Indoor Gateway (TTIG) y gestionado a través de The Things Network (TTN). A partir de ahí, los datos se reenvían mediante MQTT a Node-RED, donde se decodifican, procesan y muestran en paneles de control. Finalmente, los datos procesados se envían a ThingSpeak para su almacenamiento, visualización histórica y análisis adicional.
+El sistema combina componentes de automatización industrial y tecnologías de comunicación ligeras. A nivel de estación, los PLCs Siemens S7-1200 adquieren señales digitales y analógicas de dispositivos de campo. Estos datos se exponen mediante Modbus RTU sobre RS485 y se envían a través de dispositivos LoRaWAN Dragino RS485-LN. La información se gestiona después mediante The Things Network (TTN), se transporta usando MQTT, se visualiza en Node-RED y se almacena o analiza mediante ThingSpeak.
 
-## Flujo de datos de alto nivel
+Este repositorio presenta una reconstrucción orientada a portfolio de ese trabajo de ingeniería. Los detalles operativos sensibles, las credenciales y las configuraciones internas de producción se han omitido o saneado intencionadamente.
 
-```text
-Señales de campo
-  -> PLC Siemens S7-1200
-  -> Modbus RTU sobre RS485
-  -> Dragino RS485-LN
-  -> LoRaWAN
-  -> Gateway TTIG
-  -> The Things Network (TTN)
-  -> MQTT
-  -> Node-RED en Araka
-  -> ThingSpeak
-```
+## Contexto
 
-## Capas del sistema
+La infraestructura hidráulica suele estar compuesta por estaciones de bombeo, puntos de almacenamiento y elementos de control distribuidos geográficamente. Estas instalaciones pueden incluir bombas, medida de nivel de depósito, monitorización de presión, monitorización de caudal y variables de calidad del agua como la concentración de cloro. En muchos casos, la dificultad no está solo en medir las variables de proceso, sino en integrarlas en un sistema de monitorización centralizado que sea técnicamente viable, escalable y razonable desde el punto de vista económico.
 
-### 1. Capa de campo
+El proyecto se desarrolló en el contexto de unas prácticas y se centró en las necesidades de comunicación y monitorización de estaciones remotas pertenecientes al sistema de abastecimiento de agua. El objetivo no era simplemente adquirir señales de forma local, sino diseñar una cadena de comunicación completa desde la instrumentación de campo hasta la visualización supervisora.
 
-La capa de campo contiene las señales de proceso procedentes de cada estación de bombeo. Dependiendo de la estación, estas señales pueden incluir:
+## Problema principal
+
+Antes de esta solución, las estaciones remotas dependían más de sistemas locales y de comprobaciones presenciales. Eso hace que los tiempos de respuesta sean más lentos, complica la detección de incidencias y reduce la capacidad de supervisar varias instalaciones desde un único punto.
+
+El reto de ingeniería consistía en crear un sistema capaz de:
+
+* Adquirir variables operativas de estaciones remotas.
+* Transmitir datos a larga distancia.
+* Integrar hardware de automatización industrial con capas de comunicación IoT.
+* Presentar la información en una interfaz central.
+* Definir una estructura que pudiera replicarse en estaciones adicionales.
+
+## Objetivos del proyecto
+
+Los objetivos del proyecto eran los siguientes:
+
+* Centralizar la monitorización de varias estaciones remotas de bombeo de agua.
+* Capturar señales industriales tanto digitales como analógicas.
+* Utilizar un enfoque de comunicación de largo alcance y bajo consumo.
+* Crear un puente práctico entre la instrumentación de campo y las herramientas cloud o de supervisión.
+* Facilitar una futura integración con entornos tipo SCADA.
+* Establecer una arquitectura reutilizable para instalaciones remotas similares.
+
+## Alcance de la solución
+
+La solución se concibió como una arquitectura de monitorización de extremo a extremo que cubría las siguientes capas:
+
+* **Capa de campo:** sensores, señales relacionadas con bombas y variables de proceso.
+* **Capa de control:** adquisición de señales basada en PLC Siemens y mapeo interno de variables.
+* **Capa de comunicación:** Modbus RTU sobre RS485 y transmisión LoRaWAN.
+* **Capa de red y transporte:** flujo de mensajes mediante TTN y MQTT.
+* **Capa de visualización:** dashboards en Node-RED y vistas cloud en ThingSpeak.
+
+Este alcance hizo que el proyecto fuera algo más que un simple ejercicio de automatización. Se convirtió en un proyecto de integración de sistemas que involucraba control industrial, comunicaciones, transporte de datos y visualización.
+
+## Estaciones y variables operativas
+
+Dependiendo de la estación, la información monitorizada podía incluir:
 
 * Estado de marcha de bombas.
 * Estado de fallo de bombas.
 * Nivel de depósito.
 * Nivel de pozo.
-* Presión.
+* Presión de línea o de aspiración.
 * Caudal.
-* Variables relacionadas con el cloro.
+* Concentración de cloro.
 
-Estas señales representan el estado operativo de cada instalación remota y son el punto de partida de la cadena de monitorización.
+Una parte clave del trabajo de ingeniería no consistió solo en capturar esas variables, sino en estructurarlas de forma consistente para que la misma lógica de comunicación pudiera reutilizarse en distintas estaciones.
 
-### 2. Capa de control
+## Por qué esta arquitectura era relevante
 
-Cada estación se articula en torno a un PLC Siemens S7-1200. El PLC se encarga de:
+Esta arquitectura resultaba técnicamente atractiva porque equilibraba varios requisitos a la vez:
 
-* Adquirir señales digitales y analógicas.
-* Organizar internamente las variables.
-* Exponer los datos relevantes para su comunicación.
+* Robustez industrial mediante adquisición basada en PLC.
+* Comunicación entre emplazamientos distribuidos geográficamente.
+* Menor complejidad de despliegue frente a alternativas más pesadas.
+* Soporte para múltiples estaciones remotas.
+* Actualizaciones periódicas adecuadas para monitorización operativa.
+* Escalabilidad futura.
 
-El PLC aporta la robustez industrial del sistema y actúa como unidad local de control y adquisición a nivel de estación.
+En otras palabras, el proyecto se diseñó no solo para hacer visible una estación, sino para definir un enfoque de monitorización que pudiera ampliarse.
 
-### 3. Capa de comunicación local
+## Mi papel
 
-La comunicación entre el PLC y el dispositivo de transmisión LoRaWAN se basa en Modbus RTU sobre RS485.
+Mi contribución se centró en la parte de ingeniería e integración del proyecto. El trabajo incluyó:
 
-Esta capa actúa como puente entre el hardware de control industrial y el sistema de comunicación inalámbrica. En este proyecto, el Dragino RS485-LN actúa como maestro Modbus y consulta el PLC para recuperar los valores necesarios.
+* Comprender las necesidades operativas de las estaciones.
+* Contribuir a la definición de la arquitectura de comunicaciones.
+* Participar en el mapeo de señales y en la estructuración de datos.
+* Trabajar con lógica de adquisición centrada en PLC.
+* Integrar las capas de comunicación Modbus y LoRaWAN.
+* Dar soporte al flujo de datos hacia TTN, MQTT, Node-RED y ThingSpeak.
+* Participar en pruebas y validación.
 
-## Arquitectura de comunicación LoRaWAN
+## Resultado principal
 
-### 4. Capa de dispositivo final
+El proyecto mostró que era viable construir una arquitectura centralizada de monitorización remota para infraestructuras hidráulicas usando una combinación de automatización industrial y tecnologías IoT. Estableció una base funcional para supervisar activos de campo desde un punto central y demostró cómo los sistemas industriales basados en PLC pueden conectarse a comunicaciones ligeras de largo alcance y a herramientas cloud de visualización.
 
-El extremo de comunicación situado en la estación es el Dragino RS485-LN. Su función principal es:
+Más allá de la implementación concreta, el proyecto también fue valioso como ejemplo práctico de digitalización industrial: conectó dispositivos de campo, protocolos industriales, comunicaciones inalámbricas, dashboards y servicios cloud dentro de un flujo coherente.
 
-* Leer datos de la estación a través de RS485.
-* Preparar el payload.
-* Transmitir la información mediante LoRaWAN.
+## Perspectiva del repositorio
 
-Este dispositivo permite conectar equipos industriales convencionales a una red IoT inalámbrica de largo alcance sin rediseñar la lógica de control local.
+Este repositorio está pensado para presentar el proyecto desde una perspectiva de portfolio y documentación de ingeniería. Se centra en:
 
-### 5. Capa de gateway
+* El problema que se resolvió.
+* La arquitectura que se seleccionó.
+* La lógica de integración de sistemas detrás del diseño.
+* Las tecnologías implicadas.
+* Los aprendizajes que pueden generalizarse a escenarios similares de IoT industrial.
 
-La transmisión inalámbrica es recibida por un The Things Indoor Gateway (TTIG), que actúa como puente entre la red de radio y el backend conectado a internet.
-
-Su función es recibir paquetes LoRa procedentes de las estaciones remotas y reenviarlos al servidor de red.
-
-### 6. Capa de servidor de red
-
-El servidor de red LoRaWAN lo proporciona The Things Network (TTN).
-
-En esta arquitectura, TTN se encarga de:
-
-* Registro de dispositivos.
-* Gestión de la red.
-* Enrutado de paquetes.
-* Gestión segura del tráfico LoRaWAN.
-
-Una decisión arquitectónica relevante del proyecto fue utilizar una configuración LoRaWAN con un servidor de red independiente en lugar de un gateway con servidor embebido. Este enfoque ofrecía mayor flexibilidad y escalabilidad para un despliegue con múltiples estaciones.
-
-## Procesamiento y visualización de datos
-
-### 7. Capa de transporte MQTT
-
-Una vez que los datos llegan a TTN, se reenvían mediante MQTT.
-
-MQTT se utiliza como mecanismo de transporte entre la plataforma de red y el entorno central de monitorización. Esto mantiene la integración ligera y práctica para flujos de datos orientados a IoT.
-
-### 8. Capa de monitorización y visualización
-
-Node-RED es la principal plataforma de visualización y tratamiento de datos en el entorno central.
-
-Sus responsabilidades incluyen:
-
-* Suscribirse a tópicos MQTT.
-* Decodificar los payloads entrantes.
-* Transformar los datos recibidos.
-* Distribuir valores a widgets del dashboard.
-* Presentar la información de las estaciones casi en tiempo real.
-
-Node-RED también fue una elección práctica porque proporcionaba un entorno visual accesible para construir paneles e integrarse con lógica de supervisión existente.
-
-### 9. Capa de host edge
-
-Node-RED está alojado en una Orange Pi 3 LTS, utilizada para mantener el servicio de monitorización en funcionamiento continuo.
-
-Este componente proporciona una plataforma de computación ligera para:
-
-* Recepción continua de datos de las estaciones.
-* Servicio local del dashboard.
-* Integración con servicios posteriores.
-
-### 10. Capa de almacenamiento y analítica
-
-ThingSpeak se utiliza como capa de almacenamiento y analítica en la nube.
-
-Su papel en la arquitectura es:
-
-* Almacenar datos históricos de las estaciones.
-* Dar soporte a la visualización de tendencias.
-* Permitir análisis estadístico adicional.
-* Servir de base para alertas o lógica futura orientada a anomalías.
-
-Esto hace que la solución global sea algo más que un dashboard en tiempo real: también incorpora una perspectiva histórica de los datos.
-
-## Por qué se eligió esta arquitectura
-
-La arquitectura seleccionada estaba alineada con las restricciones operativas y de ingeniería del proyecto.
-
-Se diseñó para proporcionar:
-
-* Comunicación de largo alcance a un coste relativamente bajo.
-* Compatibilidad con equipos industriales.
-* Supervisión centralizada de múltiples estaciones remotas.
-* Tiempos de refresco cortos para monitorización.
-* Escalabilidad para futuras incorporaciones de estaciones.
-* Integración práctica con herramientas de monitorización.
-
-El diseño resultante equilibra la fiabilidad industrial a nivel de estación con tecnologías ligeras de comunicación IoT y visualización.
-
-## Principales decisiones arquitectónicas
-
-### Adquisición industrial con PLCs
-
-El proyecto utiliza adquisición basada en PLC en lugar de hardware IoT puramente de consumo. Esto mejora la robustez y hace que la solución sea más creíble para una infraestructura real.
-
-### RS485 / Modbus como interfaz local
-
-El uso de Modbus RTU sobre RS485 proporciona una capa de comunicación industrial sencilla y conocida entre la adquisición y la transmisión inalámbrica.
-
-### LoRaWAN para la conectividad remota
-
-LoRaWAN se seleccionó porque las estaciones están distribuidas geográficamente y el proyecto requería comunicación de largo alcance con bajo coste operativo.
-
-### Modelo de servidor de red independiente
-
-El sistema se diseñó en torno a TTN como servidor de red externo, lo que resulta más escalable que mantener toda la lógica de red dentro de un único gateway.
-
-### Node-RED como capa central de monitorización
-
-Node-RED ofrecía una forma práctica de decodificar mensajes, construir dashboards y crear un puente hacia entornos de supervisión.
-
-### ThingSpeak para datos históricos
-
-ThingSpeak añadió persistencia, visualización histórica y una base para alertas y análisis posteriores.
-
-## Consideraciones de escalabilidad
-
-La arquitectura fue concebida como un patrón reutilizable, no como una integración aislada.
-
-Añadir una nueva estación requeriría principalmente:
-
-* Desplegar el PLC y el nodo de comunicación en la estación.
-* Mapear las nuevas señales.
-* Registrar el nuevo dispositivo en TTN.
-* Extender la lógica de Node-RED / ThingSpeak.
-
-Esto significa que la arquitectura puede crecer sin cambiar su modelo de comunicación principal.
-
-## Limitaciones de la arquitectura
-
-Aunque la arquitectura es práctica y escalable, también tiene algunas limitaciones:
-
-* Está enfocada más en la monitorización remota que en el control remoto completo.
-* Node-RED es muy práctico, pero no equivale a una plataforma SCADA industrial completa.
-* El endurecimiento de seguridad de MQTT y Node-RED requeriría especial atención en un despliegue de nivel productivo.
-* La versión pública orientada a portfolio no puede incluir los detalles confidenciales de la infraestructura original.
-
-## Perspectiva de la arquitectura en este repositorio
-
-Este repositorio documenta el sistema desde una perspectiva de portfolio y comunicación de ingeniería. No pretende publicar la configuración original de producción con todo detalle. En su lugar, explica la lógica de la arquitectura, las responsabilidades de cada componente y las principales decisiones que hicieron viable la solución para la monitorización remota de estaciones de agua.
+Debe entenderse como una reconstrucción profesional de un proyecto real, y no como una publicación completa del entorno de producción original.
