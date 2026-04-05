@@ -18,11 +18,11 @@ The key question was not whether every future station had already been deployed,
 
 The validation therefore focused on proving that the following chain worked reliably enough for the intended use case:
 
-* field signal acquisition
+* Field signal acquisition
 * PLC data structuring
 * Modbus communication with the telemetry converter
 * LoRaWAN transmission to TTN
-* payload decoding and message delivery
+* Payload decoding and message delivery
 * Node-RED dashboard monitoring in Araka
 * ThingSpeak-based storage and analysis
 
@@ -102,9 +102,9 @@ Before full field integration, the project validated the Dragino-to-TTN path.
 
 This confirmed that:
 
-* the device could be registered successfully
-* uplink communication could be established
-* the selected LoRaWAN approach was viable for the project
+* The device could be registered successfully
+* Uplink communication could be established
+* The selected LoRaWAN approach was viable for the project
 
 ### Stage 2. Isolated telemetry tests
 
@@ -114,9 +114,9 @@ This was valuable because it allowed the team to isolate problems and verify tha
 
 This stage confirmed that:
 
-* the telemetry link could carry the generated signals
-* initial configuration issues could be identified in a controlled setup
-* the project could move toward integrated testing with greater confidence
+* The telemetry link could carry the generated signals
+* Initial configuration issues could be identified in a controlled setup
+* The project could move toward integrated testing with greater confidence
 
 ### Stage 3. PLC + Dragino prototype validation
 
@@ -124,10 +124,10 @@ Once the isolated tests were satisfactory, the PLC and Dragino were tested toget
 
 This stage confirmed that:
 
-* the PLC could expose the required data structure
-* the Dragino could poll the PLC through Modbus RTU
-* the payload could be built from the expected register values
-* integrated station-side transmission was feasible
+* The PLC could expose the required data structure
+* The Dragino could poll the PLC through Modbus RTU
+* The payload could be built from the expected register values
+* Integrated station-side transmission was feasible
 
 ### Stage 4. Central-side reception validation
 
@@ -135,9 +135,9 @@ The reception side was then validated through MQTT, TTN decoding, and later Node
 
 This stage confirmed that:
 
-* the payload could be decoded correctly
-* the values could be routed into the central supervision layer
-* the practical change toward Node-RED as the main reception environment was viable
+* The payload could be decoded correctly
+* The values could be routed into the central supervision layer
+* The practical change toward Node-RED as the main reception environment was viable
 
 ### Stage 5. Pilot operation validation
 
@@ -183,11 +183,11 @@ The strongest overall result is that the proposed architecture was validated as 
 
 The project demonstrated that it was possible to:
 
-* acquire station data using industrial PLC hardware
-* transmit that data through a LoRaWAN-based telemetry path
-* centralize incoming information in Araka
-* visualize the station state through Node-RED dashboards
-* extend the solution with ThingSpeak for storage and analysis
+* Acquire station data using industrial PLC hardware
+* Transmit that data through a LoRaWAN-based telemetry path
+* Centralize incoming information in Araka
+* Visualize the station state through Node-RED dashboards
+* Extend the solution with ThingSpeak for storage and analysis
 
 This matters because the project was not left at design level. The architecture was actually exercised in a realistic operating context.
 
@@ -201,10 +201,10 @@ The pilot results support that decision.
 
 The communication chain through Dragino, TTIG, and TTN demonstrated that the selected LoRaWAN approach was viable for this use case and aligned with the original design requirements of:
 
-* long-range coverage
-* low operating cost
-* support for multiple remote assets
-* expandability beyond the pilot case
+* Long-range coverage
+* Low operating cost
+* Support for multiple remote assets
+* Expandability beyond the pilot case
 
 This is an important result because it validates not only implementation, but also the earlier architectural decision-making.
 
@@ -218,10 +218,10 @@ This became especially important after the project adapted to the practical limi
 
 The Node-RED layer demonstrated that it could:
 
-* receive telemetry through MQTT
-* route decoded values correctly
-* provide real-time dashboards
-* support station-level visibility in a form that operators can use quickly
+* Receive telemetry through MQTT
+* Route decoded values correctly
+* Provide real-time dashboards
+* Support station-level visibility in a form that operators can use quickly
 
 From a portfolio point of view, this is one of the most valuable outcomes, because it shows that the project adapted to real infrastructure constraints without losing functionality.
 
@@ -233,11 +233,11 @@ The combination of the Siemens PLC, CM 1241, Dragino RS485-LN, TTIG, and Orange 
 
 This is important because the project depended on multiple hardware layers working together:
 
-* industrial acquisition hardware
-* serial communication hardware
-* wireless telemetry hardware
-* gateway and network infrastructure
-* central processing hardware
+* Industrial acquisition hardware
+* Serial communication hardware
+* Wireless telemetry hardware
+* Gateway and network infrastructure
+* Central processing hardware
 
 The pilot showed that this heterogeneous integration was feasible and operationally useful.
 
@@ -261,10 +261,10 @@ The pilot also demonstrated that the system could be extended beyond immediate d
 
 By publishing processed values to ThingSpeak, the project gained:
 
-* historical storage
-* trend visualization
-* additional analysis capabilities
-* a path toward alarms and event-oriented monitoring
+* Historical storage
+* Trend visualization
+* Additional analysis capabilities
+* A path toward alarms and event-oriented monitoring
 
 This means the pilot was not limited to instantaneous telemetry display. It also established a foundation for deeper operational analysis.
 
@@ -289,12 +289,12 @@ A useful way to make the results concrete is to explain what the pilot allowed o
 
 For the validated station context, the dashboards could present variables such as:
 
-* pump operating state
-* water shortage alarms
-* valve state
-* tank and well level values
-* flow-related values
-* chlorine-related process values
+* Pump operating state
+* Water shortage alarms
+* Valve state
+* Tank and well level values
+* Flow-related values
+* Chlorine-related process values
 
 This is important because it shows that the system was not merely transmitting a generic payload. It was exposing operationally meaningful process information.
 
@@ -340,12 +340,12 @@ From a technical portfolio standpoint, the most important result is not a single
 
 It is that the project demonstrates the ability to:
 
-* define realistic design requirements
-* choose an appropriate communication architecture
-* integrate industrial hardware with IoT networking
-* adapt implementation plans to real deployment constraints
-* validate a complete end-to-end monitoring system in pilot conditions
-* communicate the engineering value of the solution clearly
+* Define realistic design requirements
+* Choose an appropriate communication architecture
+* Integrate industrial hardware with IoT networking
+* Adapt implementation plans to real deployment constraints
+* Validate a complete end-to-end monitoring system in pilot conditions
+* Communicate the engineering value of the solution clearly
 
 That makes the project a strong example of practical OT/IoT systems engineering.
 
@@ -357,11 +357,11 @@ A credible validation document should also state the limits of the observed resu
 
 The pilot did **not** fully demonstrate:
 
-* large-scale deployment across every planned station
-* long-term production operation under all seasonal and environmental conditions
-* hard real-time control performance
-* enterprise-grade cybersecurity hardening
-* exhaustive quantitative benchmarking such as packet-loss statistics, uptime measurements, or long-duration field reliability studies
+* Large-scale deployment across every planned station
+* Long-term production operation under all seasonal and environmental conditions
+* Hard real-time control performance
+* Enterprise-grade cybersecurity hardening
+* Exhaustive quantitative benchmarking such as packet-loss statistics, uptime measurements, or long-duration field reliability studies
 
 Mentioning this improves the credibility of the portfolio because it avoids overstating what the pilot proved.
 
@@ -371,12 +371,12 @@ Mentioning this improves the credibility of the portfolio because it avoids over
 
 The pilot confirmed several important strengths:
 
-* the architecture works end to end
-* the selected communication stack is viable
+* The architecture works end to end
+* The selected communication stack is viable
 * Node-RED is effective for centralized supervision
-* the solution can handle meaningful industrial variables
-* the design is suitable for further expansion
-* the system improves remote visibility compared with decentralized manual supervision
+* The solution can handle meaningful industrial variables
+* The design is suitable for further expansion
+* The system improves remote visibility compared with decentralized manual supervision
 
 ---
 
@@ -386,11 +386,11 @@ Validation also leaves some open engineering questions for future work.
 
 Relevant next-step concerns include:
 
-* migration from a pilot/public network-server context toward a more production-oriented setup if needed
-* stronger security hardening
-* broader rollout across additional stations
-* longer field validation over extended periods
-* deeper alarm logic, analytics, and maintenance-oriented automation
+* Migration from a pilot/public network-server context toward a more production-oriented setup if needed
+* Stronger security hardening
+* Broader rollout across additional stations
+* Longer field validation over extended periods
+* Deeper alarm logic, analytics, and maintenance-oriented automation
 
 These are not signs of project weakness. They are natural next steps after a successful pilot.
 
@@ -430,10 +430,10 @@ The pilot between Mandojana and Araka demonstrated that the architecture is not 
 
 The most honest engineering conclusion is this:
 
-* the pilot successfully validated the architecture
-* the solution is functionally useful
-* the project established a repeatable pattern for future deployment
-* broader scale-up and hardening remain the logical next steps
+* The pilot successfully validated the architecture
+* The solution is functionally useful
+* The project established a repeatable pattern for future deployment
+* Broader scale-up and hardening remain the logical next steps
 
 That makes the results strong, credible, and highly suitable for a technical portfolio.
 
