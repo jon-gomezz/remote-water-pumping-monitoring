@@ -59,25 +59,19 @@ File: [`data-flow.md`](data-flow.md)
 
 Describes how process variables are acquired, encoded, transmitted, decoded, processed, and finally published to monitoring dashboards.
 
-### 5. Implementation
-
-File: [`implementation.md`](implementation.md)
-
-Focuses on the practical system setup, integration logic, configuration decisions, and implementation details relevant to the final monitoring pipeline.
-
-### 6. Validation and Results
+### 5. Validation and Results
 
 File: [`validation-and-results.md`](validation-and-results.md)
 
 Presents how the solution was tested, what results were observed, and what technical conclusions can be extracted from the validation stage.
 
-### 7. Deployment Notes
+### 6. Deployment Notes
 
 File: [`deployment-notes.md`](deployment-notes.md)
 
 Collects operational notes, configuration guidance, integration considerations, and useful deployment remarks.
 
-### 8. Lessons Learned
+### 7. Lessons Learned
 
 File: [`lessons-learned.md`](lessons-learned.md)
 
@@ -133,9 +127,8 @@ For a first technical review, the suggested reading sequence is:
 1. `project-overview.md`
 2. `architecture.md`
 3. `data-flow.md`
-4. `implementation.md`
-5. `validation-and-results.md`
-6. `lessons-learned.md`
+4. `validation-and-results.md`
+5. `lessons-learned.md`
 
 This order helps the reader move from problem framing to architecture, then to execution and technical conclusions.
 
