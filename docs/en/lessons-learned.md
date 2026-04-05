@@ -39,9 +39,9 @@ One of the strongest lessons from the project is that the technical stack only m
 
 This project was not about “using LoRaWAN” or “building dashboards” in isolation. It was about solving a specific problem:
 
-* remote pumping stations were difficult to supervise continuously
-* local-only visibility increased operational friction
-* centralized monitoring could reduce unnecessary travel and improve response capacity
+* Remote pumping stations were difficult to supervise continuously
+* Local-only visibility increased operational friction
+* Centralized monitoring could reduce unnecessary travel and improve response capacity
 
 The technologies were useful because they served that operational need.
 
@@ -49,10 +49,10 @@ The technologies were useful because they served that operational need.
 
 In future projects, it is important to frame the problem first in terms of:
 
-* what needs to be monitored
-* how often the information needs to be refreshed
-* what operators need to see
-* what constraints exist at the field side and at the central side
+* What needs to be monitored
+* How often the information needs to be refreshed
+* What operators need to see
+* What constraints exist at the field side and at the central side
 
 That problem-first mindset prevents unnecessary complexity.
 
@@ -64,23 +64,23 @@ A second key lesson is the value of thinking in layers.
 
 The project worked well because it was not treated as one opaque system. Instead, it was structured into layers:
 
-* field acquisition
-* industrial serial communication
-* telemetry conversion
+* Field acquisition
+* Industrial serial communication
+* Telemetry conversion
 * LoRaWAN networking
 * MQTT delivery
-* dashboard processing
-* storage and analysis
+* Dashboard processing
+* Storage and analysis
 
 ### Why this was important
 
 This made the solution easier to:
 
-* reason about during design
-* test during implementation
-* troubleshoot during deployment
-* communicate in documentation and interviews
-* extend toward additional stations
+* Reason about during design
+* Test during implementation
+* Troubleshoot during deployment
+* Communicate in documentation and interviews
+* Extend toward additional stations
 
 When systems are designed in layers, failures are easier to isolate and responsibilities are easier to assign.
 
@@ -95,10 +95,10 @@ The PLC-side decision to organize variables into a consistent internal format wa
 That structure made it easier to align:
 
 * Modbus register access
-* payload construction in the Dragino
+* Payload construction in the Dragino
 * TTN decoder logic
 * Node-RED variable extraction
-* dashboard mapping
+* Dashboard mapping
 
 ### Main takeaway
 
@@ -118,7 +118,7 @@ At first glance, a project like this may look like a connectivity problem. In pr
 
 The project had to align:
 
-* field signals and process meaning
+* Field signals and process meaning
 * PLC memory organization
 * Modbus addressing
 * Dragino payload selection
@@ -154,12 +154,12 @@ Another major lesson is the practical value of staged validation.
 
 The implementation did not go directly from concept to final deployment. Instead, parts of the system were tested progressively:
 
-* wireless path validation
-* signal-generator tests
+* Wireless path validation
+* Signal-generator tests
 * PLC + Dragino prototype tests
-* reception and decoding development
+* Reception and decoding development
 * Node-RED-based supervision
-* pilot validation
+* Pilot validation
 
 ### Why this worked well
 
@@ -167,9 +167,9 @@ Testing subsystems in isolation reduced ambiguity.
 
 For example, using a signal generator before full PLC integration helped distinguish whether a problem belonged to:
 
-* the wireless transmission path
-* the converter logic
-* the PLC data side
+* The wireless transmission path
+* The converter logic
+* The PLC data side
 
 ### Main takeaway
 
@@ -206,10 +206,10 @@ Before implementation, Node-RED could have been seen as a visualization add-on. 
 It solved several needs simultaneously:
 
 * MQTT reception
-* decoded payload handling
-* variable routing
-* dashboard presentation
-* central operational visibility
+* Decoded payload handling
+* Variable routing
+* Dashboard presentation
+* Central operational visibility
 
 ### Why this lesson is important
 
@@ -242,10 +242,10 @@ The project reinforces an important architecture lesson: communication technolog
 
 LoRaWAN was a good choice here because the use case required:
 
-* long-range communication
-* low operating cost
-* support for geographically distributed assets
-* intermediate refresh times rather than very fast control cycles
+* Long-range communication
+* Low operating cost
+* Support for geographically distributed assets
+* Intermediate refresh times rather than very fast control cycles
 
 ### What this teaches
 
@@ -253,10 +253,10 @@ LoRaWAN is highly effective when the problem matches its strengths.
 
 It is not the right technology for every industrial use case, especially not for applications that require:
 
-* high throughput
-* very low latency
-* continuous dense data transmission
-* tight closed-loop control
+* High throughput
+* Very low latency
+* Continuous dense data transmission
+* Tight closed-loop control
 
 ### Main takeaway
 
@@ -272,18 +272,18 @@ The pilot validated the architecture successfully, but it also highlighted the d
 
 The pilot demonstrated:
 
-* end-to-end functionality
-* useful centralized monitoring
-* viable long-range communication
-* repeatable station-side pattern
+* End-to-end functionality
+* Useful centralized monitoring
+* Viable long-range communication
+* Repeatable station-side pattern
 
 But a broader production rollout would still require further work in areas such as:
 
-* large-scale deployment discipline
-* long-duration field validation
-* stronger security hardening
-* more formal operational support procedures
-* possibly more controlled network-server ownership depending on requirements
+* Large-scale deployment discipline
+* Long-duration field validation
+* Stronger security hardening
+* More formal operational support procedures
+* Possibly more controlled network-server ownership depending on requirements
 
 ### Main takeaway
 
@@ -328,11 +328,11 @@ A particularly practical lesson from the project is that simplicity creates reli
 
 The solution did not try to solve everything at once. It focused on a manageable objective:
 
-* acquire meaningful variables
-* transmit them efficiently
-* decode them cleanly
-* visualize them clearly
-* store them for later review
+* Acquire meaningful variables
+* Transmit them efficiently
+* Decode them cleanly
+* Visualize them clearly
+* Store them for later review
 
 ### Why this was valuable
 
@@ -356,10 +356,10 @@ Repeatability is what makes the design valuable for future growth.
 
 It means that expansion can be approached by reusing:
 
-* the same acquisition logic pattern
-* the same communication chain
-* the same decoder approach
-* the same dashboard organization model
+* The same acquisition logic pattern
+* The same communication chain
+* The same decoder approach
+* The same dashboard organization model
 
 ### Main takeaway
 
@@ -408,13 +408,13 @@ Recognizing trade-offs like these is a sign of design maturity.
 
 If the project were repeated with the same pilot objectives, the following choices would still make sense:
 
-* use a layered architecture
-* standardize data early inside the PLC
-* validate subsystems progressively
-* use LoRaWAN for long-range supervisory telemetry
-* use MQTT for clean message delivery
-* use Node-RED for flexible central-side integration and dashboards
-* keep historical storage as a separate concern from live monitoring
+* Use a layered architecture
+* Standardize data early inside the PLC
+* Validate subsystems progressively
+* Use LoRaWAN for long-range supervisory telemetry
+* Use MQTT for clean message delivery
+* Use Node-RED for flexible central-side integration and dashboards
+* Keep historical storage as a separate concern from live monitoring
 
 These decisions created most of the project’s strengths.
 
@@ -467,12 +467,12 @@ The most important lesson from this project is that useful engineering solutions
 
 They come from:
 
-* understanding the operational problem clearly
-* structuring the system in manageable layers
-* keeping interfaces aligned
-* validating progressively
-* adapting when real infrastructure constraints appear
-* documenting the system well enough that it can be extended later
+* Understanding the operational problem clearly
+* Structuring the system in manageable layers
+* Keeping interfaces aligned
+* Validating progressively
+* Adapting when real infrastructure constraints appear
+* Documenting the system well enough that it can be extended later
 
 This project is a good example of that.
 
@@ -484,14 +484,14 @@ Its value lies not only in the fact that it produced a working pilot, but in the
 
 From a portfolio perspective, the lessons learned can be summarized in a simple way:
 
-* start from the real operational need
-* design in layers
-* standardize data early
-* test progressively
-* adapt to deployment reality
-* document interfaces clearly
-* separate pilot success from production readiness
-* design for repeatability rather than one-off complexity
+* Start from the real operational need
+* Design in layers
+* Standardize data early
+* Test progressively
+* Adapt to deployment reality
+* Document interfaces clearly
+* Separate pilot success from production readiness
+* Design for repeatability rather than one-off complexity
 
 Those lessons are broader than this single project. They are useful principles for future OT/IoT monitoring systems as well.
 
