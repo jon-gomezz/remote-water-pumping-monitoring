@@ -35,14 +35,14 @@ This image should appear near the top of the page, immediately after the archite
 
 The system architecture was shaped by a set of practical design requirements:
 
-* long-distance communication with low operating cost
-* use of industrial-grade hardware
-* centralized supervision of multiple remote stations
-* compatibility with an existing SCADA context
-* acceptable refresh times for operational monitoring
-* support for both digital and analog signals
-* robustness in industrial environments
-* scalability for future station additions
+* Long-distance communication with low operating cost
+* Use of industrial-grade hardware
+* Centralized supervision of multiple remote stations
+* Compatibility with an existing SCADA context
+* Acceptable refresh times for operational monitoring
+* Support for both digital and analog signals
+* Robustness in industrial environments
+* Scalability for future station additions
 
 Rather than optimizing for maximum throughput, the architecture was optimized for reliability, range, simplicity, and maintainability in a distributed water infrastructure context.
 
@@ -64,10 +64,10 @@ A Siemens S7-1214 PLC is used at each monitored station as the local acquisition
 
 Its role in the architecture is to:
 
-* read the available digital and analog signals
-* organize them into a consistent internal structure
-* expose the selected values for external communication
-* serve as the industrial interface between the process and the telemetry chain
+* Read the available digital and analog signals
+* Organize them into a consistent internal structure
+* Expose the selected values for external communication
+* Serve as the industrial interface between the process and the telemetry chain
 
 A CM 1241 communication module extends the PLC with RS-422/485 communication capability, enabling the serial communication link used in the project.
 
@@ -77,10 +77,10 @@ The Dragino RS485-LN acts as the bridge between industrial serial communications
 
 This is a key architectural decision. Instead of replacing the industrial control layer with native IoT devices, the project preserves the PLC-based logic and adds a conversion layer that:
 
-* queries the PLC over Modbus RTU
-* receives the requested register data
-* prepares the payload to be transmitted
-* sends that payload through LoRaWAN
+* Queries the PLC over Modbus RTU
+* Receives the requested register data
+* Prepares the payload to be transmitted
+* Sends that payload through LoRaWAN
 
 In the local Modbus network, the Dragino module behaves as the master and the PLC behaves as the slave.
 
@@ -90,10 +90,10 @@ Once the data has been extracted from the PLC, it is transmitted over LoRaWAN.
 
 This communication layer was chosen because it provides:
 
-* long-range coverage
-* low energy and low operating cost characteristics
-* suitability for geographically distributed infrastructure
-* an architecture that can grow to support additional stations
+* Long-range coverage
+* Low energy and low operating cost characteristics
+* Suitability for geographically distributed infrastructure
+* An architecture that can grow to support additional stations
 
 The project was not structured as a simple point-to-point LoRa link. Instead, it adopted a **LoRaWAN architecture with an independent network server**, which is more appropriate for centralized supervision and future expansion.
 
@@ -103,10 +103,10 @@ The wireless traffic is received by a TTIG gateway and forwarded to The Things N
 
 At this stage, TTN is responsible for:
 
-* receiving uplinks from the gateway
-* managing registered end devices
-* routing the received data
-* serving as the network-level intermediary between field devices and upper-layer applications
+* Receiving uplinks from the gateway
+* Managing registered end devices
+* Routing the received data
+* Serving as the network-level intermediary between field devices and upper-layer applications
 
 Once the data reaches TTN, it is forwarded through MQTT toward the central processing environment.
 
@@ -118,17 +118,17 @@ Node-RED, running in the Araka environment with Orange Pi support, receives the 
 
 Its functions include:
 
-* payload reception
-* data decoding and transformation
-* routing values to dashboard widgets
-* presenting real-time process information to operators
+* Payload reception
+* Data decoding and transformation
+* Routing values to dashboard widgets
+* Presenting real-time process information to operators
 
 After processing in Node-RED, the data is also sent to ThingSpeak for:
 
-* historical storage
-* graphical analysis
-* alarm-oriented monitoring
-* additional cloud-based visualization
+* Historical storage
+* Graphical analysis
+* Alarm-oriented monitoring
+* Additional cloud-based visualization
 
 This creates a two-level consumption model:
 
@@ -168,12 +168,12 @@ This figure can be placed after the end-to-end data path section.
 
 A useful way to explain the system in interviews is to group the architecture into the following functional blocks:
 
-* **acquisition block:** PLC + local signals
-* **conversion block:** CM 1241 + Dragino RS485-LN
-* **transmission block:** LoRa / LoRaWAN + gateway
-* **network block:** TTN
-* **processing block:** MQTT + Node-RED
-* **analytics block:** ThingSpeak
+* **Acquisition block:** PLC + local signals
+* **Conversion block:** CM 1241 + Dragino RS485-LN
+* **Transmission block:** LoRa / LoRaWAN + gateway
+* **Network block:** TTN
+* **Processing block:** MQTT + Node-RED
+* **Analytics block:** ThingSpeak
 
 This framing makes the architecture easier to communicate than describing it only as a list of devices.
 
@@ -185,10 +185,10 @@ The original design space included different LoRa connectivity models, such as p
 
 For this project, the independent network server approach was the most suitable because it offers:
 
-* centralized network management
-* better scalability when adding more stations
-* easier remote supervision and maintenance
-* clearer separation between field devices, gateways, and application logic
+* Centralized network management
+* Better scalability when adding more stations
+* Easier remote supervision and maintenance
+* Clearer separation between field devices, gateways, and application logic
 
 That choice fits the project better than direct LoRa links because the main goal is not just transmission, but structured centralized monitoring across multiple remote assets.
 
@@ -200,11 +200,11 @@ Node-RED is not just a dashboard tool in this project. It is an integration laye
 
 This is especially important because the monitoring point in Araka had practical constraints related to the existing SCADA context. Instead of relying on a direct internet-connected PLC integration in the central environment, Node-RED provided a flexible software layer capable of:
 
-* receiving MQTT data from TTN
-* decoding incoming payloads
-* building monitoring dashboards quickly
-* adapting the visualization to each station
-* acting as a bridge between incoming telemetry and operator-facing supervision
+* Receiving MQTT data from TTN
+* Decoding incoming payloads
+* Building monitoring dashboards quickly
+* Adapting the visualization to each station
+* Acting as a bridge between incoming telemetry and operator-facing supervision
 
 Because of that, Node-RED should be understood as a core architectural component rather than as a secondary visualization add-on.
 
@@ -226,9 +226,9 @@ The architecture was conceived for several pumping stations across the Vitoria-G
 
 Architecturally, this matters because the design was not built around a single asset. It was built around a repeatable station pattern:
 
-* one local acquisition setup per station
-* one wireless telemetry path per station
-* one centralized monitoring environment for all incoming data
+* One local acquisition setup per station
+* One wireless telemetry path per station
+* One centralized monitoring environment for all incoming data
 
 This repeatability is one of the strongest portfolio aspects of the project because it shows that the architecture can be replicated instead of remaining tied to a single isolated installation.
 
@@ -272,12 +272,12 @@ New stations can be incorporated by repeating the station-side acquisition and c
 
 The strongest aspects of the architecture are:
 
-* clear separation of concerns between acquisition, transmission, network management, processing, and visualization
-* reuse of industrial hardware already suited to the environment
-* centralized monitoring for geographically distributed assets
-* scalability beyond the pilot deployment
-* practical integration of OT and IoT layers
-* combination of operational dashboards and historical cloud analytics
+* Clear separation of concerns between acquisition, transmission, network management, processing, and visualization
+* Reuse of industrial hardware already suited to the environment
+* Centralized monitoring for geographically distributed assets
+* Scalability beyond the pilot deployment
+* Practical integration of OT and IoT layers
+* Combination of operational dashboards and historical cloud analytics
 
 ---
 
@@ -287,10 +287,10 @@ This portfolio version should also be honest about architectural limitations.
 
 Some relevant limitations are:
 
-* the system is designed for monitoring, not for high-speed control loops
-* dependence on TTN introduces reliance on an external public network service in the pilot architecture
+* The system is designed for monitoring, not for high-speed control loops
+* Dependence on TTN introduces reliance on an external public network service in the pilot architecture
 * Node-RED is flexible, but it is not the same as a hardened enterprise SCADA stack
-* cybersecurity hardening can be expanded significantly in future iterations
+* Cybersecurity hardening can be expanded significantly in future iterations
 
 Mentioning these limits improves the credibility of the portfolio because it shows engineering judgment rather than overselling the solution.
 
