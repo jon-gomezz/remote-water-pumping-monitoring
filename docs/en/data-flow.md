@@ -570,9 +570,9 @@ That end-to-end logic is one of the main reasons this project works well as a te
 
 ## What Comes Next
 
-After understanding how the information moves through the system, the next document should explain how the solution was implemented in practice.
+After understanding how the information moves through the system, the next logical step is to document how the pilot was tested and what results were observed.
 
-Continue with: [`implementation.md`](implementation.md)
+Continue with: [`validation-and-results.md`](validation-and-results.md)
 
 ---
 
