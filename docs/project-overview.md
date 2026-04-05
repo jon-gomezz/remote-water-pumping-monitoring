@@ -14,6 +14,10 @@ Water infrastructure is often composed of geographically dispersed pumping stati
 
 The project was developed in the context of an internship and focused on the communication and monitoring needs of remote stations belonging to the water supply system. The goal was not simply to acquire signals locally, but to design a complete communication chain from field instrumentation to supervisory visualization.
 
+<p align="center">
+  <img src="../assets/images/fig-01-stations-overview.png" alt="Stations overview" width="400">
+</p>
+
 ## Main Problem
 
 Before this solution, remote stations depended more heavily on local systems and physical checks. That makes response times slower, complicates the detection of incidents, and reduces the ability to supervise several installations from a single point.
