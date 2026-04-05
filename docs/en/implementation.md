@@ -44,19 +44,19 @@ The first implementation stage focused on building a technically coherent basis 
 
 At this point, the objective was not yet full operation, but rather answering the key engineering questions:
 
-* which wireless architecture best fits the project requirements
-* how the PLC should communicate with the telemetry device
-* how the payload should be structured
-* how the central monitoring point should receive and present the information
+* Which wireless architecture best fits the project requirements
+* How the PLC should communicate with the telemetry device
+* How the payload should be structured
+* How the central monitoring point should receive and present the information
 
 The main activities in this stage were:
 
-* defining an initial project diagram
-* studying LoRa and LoRaWAN network options
-* reviewing the Siemens S7-1200 PLC environment
-* analyzing the Dragino RS485-LN as the RS-485 to LoRaWAN bridge
-* studying Modbus RTU as the local communication protocol
-* deciding on a LoRaWAN architecture with an independent network server
+* Defining an initial project diagram
+* Studying LoRa and LoRaWAN network options
+* Reviewing the Siemens S7-1200 PLC environment
+* Analyzing the Dragino RS485-LN as the RS-485 to LoRaWAN bridge
+* Studying Modbus RTU as the local communication protocol
+* Deciding on a LoRaWAN architecture with an independent network server
 
 This stage was critical because it established the design logic that later implementation work depended on.
 
@@ -64,10 +64,10 @@ This stage was critical because it established the design logic that later imple
 
 By the end of this stage, the project had:
 
-* a clear end-to-end architecture
-* a justified communication stack
-* a defined station-side hardware combination
-* an initial plan for payload handling and centralized reception
+* A clear end-to-end architecture
+* A justified communication stack
+* A defined station-side hardware combination
+* An initial plan for payload handling and centralized reception
 
 ---
 
@@ -81,18 +81,18 @@ The practical objective was to avoid debugging the entire system at once. Instea
 
 ### Main tasks in this stage
 
-* registering and testing the Dragino RS485-LN in TTN
-* performing first connection tests between the telemetry device and the LoRaWAN platform
-* injecting signals with a signal generator to isolate communication behavior before integrating the PLC
-* designing the PLC-side emission logic
-* building the first complete Dragino + PLC S7-1200 prototype
+* Registering and testing the Dragino RS485-LN in TTN
+* Performing first connection tests between the telemetry device and the LoRaWAN platform
+* Injecting signals with a signal generator to isolate communication behavior before integrating the PLC
+* Designing the PLC-side emission logic
+* Building the first complete Dragino + PLC S7-1200 prototype
 
 This sequence is especially important because it shows disciplined engineering practice:
 
-* first validate the LoRaWAN path
-* then validate the converter behavior
-* then validate PLC integration
-* only then move toward a broader central monitoring workflow
+* First validate the LoRaWAN path
+* Then validate the converter behavior
+* Then validate PLC integration
+* Only then move toward a broader central monitoring workflow
 
 ### Why the signal-generator step mattered
 
@@ -100,10 +100,10 @@ Using a signal generator before final PLC integration was a very good implementa
 
 It made it possible to:
 
-* test the telemetry chain in isolation
-* identify whether issues belonged to the wireless link or to the PLC side
-* reduce ambiguity during debugging
-* avoid mixing field logic problems with transmission problems
+* Test the telemetry chain in isolation
+* Identify whether issues belonged to the wireless link or to the PLC side
+* Reduce ambiguity during debugging
+* Avoid mixing field logic problems with transmission problems
 
 That kind of staged isolation is exactly the kind of implementation thinking worth highlighting in a technical portfolio.
 
@@ -117,11 +117,11 @@ This stage focused on the problem of how to receive TTN data and transform it in
 
 ### Main tasks in this stage
 
-* selecting MQTT as the reception protocol
-* creating the first decoding logic for received payloads
-* exploring how received data could be transformed into a format readable by PLC-oriented environments
-* implementing deserialization logic for the received payload
-* studying bidirectional communication possibilities through MQTT
+* Selecting MQTT as the reception protocol
+* Creating the first decoding logic for received payloads
+* Exploring how received data could be transformed into a format readable by PLC-oriented environments
+* Implementing deserialization logic for the received payload
+* Studying bidirectional communication possibilities through MQTT
 
 This stage is important to describe honestly.
 
@@ -133,11 +133,11 @@ MQTT was chosen because it provided a clean and lightweight way to move data fro
 
 From an implementation perspective, MQTT offered several practical benefits:
 
-* low overhead
-* easy topic-based routing
-* compatibility with IoT workflows
-* straightforward integration with Node-RED
-* good fit for multi-device telemetry pipelines
+* Low overhead
+* Easy topic-based routing
+* Compatibility with IoT workflows
+* Straightforward integration with Node-RED
+* Good fit for multi-device telemetry pipelines
 
 ---
 
@@ -153,13 +153,13 @@ This is not a secondary detail. It is a real engineering adaptation to infrastru
 
 ### Main tasks in this stage
 
-* configuring Node-RED to receive and process incoming data
-* building the Node-RED flows needed to decode and route payload values
-* integrating MQTT reception from TTN into Node-RED
-* deploying the required hardware and software at the pumping-station and central sides
-* creating dashboards for real-time supervision
-* integrating ThingSpeak for storage and analysis
-* improving dashboards and adding alarm-oriented capabilities
+* Configuring Node-RED to receive and process incoming data
+* Building the Node-RED flows needed to decode and route payload values
+* Integrating MQTT reception from TTN into Node-RED
+* Deploying the required hardware and software at the pumping-station and central sides
+* Creating dashboards for real-time supervision
+* Integrating ThingSpeak for storage and analysis
+* Improving dashboards and adding alarm-oriented capabilities
 
 This stage is where the project became a usable monitoring solution rather than a communication prototype.
 
@@ -175,15 +175,15 @@ The Siemens S7-1214C PLC was used as the station-side acquisition unit.
 
 At implementation level, this involved:
 
-* wiring digital and analog process signals to the PLC
-* adding the required communication and expansion modules where needed
-* mapping the available variables according to each station
-* preparing the PLC program to expose structured values for transmission
+* Wiring digital and analog process signals to the PLC
+* Adding the required communication and expansion modules where needed
+* Mapping the available variables according to each station
+* Preparing the PLC program to expose structured values for transmission
 
 For Mandojana in particular, the monitored implementation included:
 
-* digital states for pump operation, water-shortage alarm, and valve status
-* analog values such as well level, tank level, flow, and chlorine-related variables
+* Digital states for pump operation, water-shortage alarm, and valve status
+* Analog values such as well level, tank level, flow, and chlorine-related variables
 
 ### 2. CM 1241 serial communication configuration
 
@@ -191,10 +191,10 @@ The CM 1241 module was configured in TIA Portal to provide the required RS-422/4
 
 This required defining parameters such as:
 
-* transmission speed
-* parity
-* data bits
-* communication behavior consistent with Modbus RTU
+* Transmission speed
+* Parity
+* Data bits
+* Communication behavior consistent with Modbus RTU
 
 ### 3. PLC memory and data-block structuring
 
@@ -202,8 +202,8 @@ A very important implementation choice was to structure station data inside the 
 
 Instead of treating each station as a completely independent case, the implementation organized data into a common 4-word structure:
 
-* two words for digital information
-* two words for analog information
+* Two words for digital information
+* Two words for analog information
 
 This made later configuration easier in the Dragino, TTN decoder, and Node-RED flows.
 
@@ -236,13 +236,13 @@ It had to be configured not just as a radio device, but as an operational bridge
 
 ### Practical implementation tasks
 
-* physically connecting and powering the device
-* connecting the antenna and local serial interface
-* configuring the module through AT commands during setup
-* defining the Modbus requests to be sent to the PLC
-* selecting the returned bytes that would form the payload
-* validating correct uplink behavior toward TTN
-* preparing downlink capability when needed for remote command behavior
+* Physically connecting and powering the device
+* Connecting the antenna and local serial interface
+* Configuring the module through AT commands during setup
+* Defining the Modbus requests to be sent to the PLC
+* Selecting the returned bytes that would form the payload
+* Validating correct uplink behavior toward TTN
+* Preparing downlink capability when needed for remote command behavior
 
 ### Why this step was important
 
@@ -252,8 +252,8 @@ The Dragino configuration had to align with:
 
 * PLC memory layout
 * Modbus register addressing
-* expected byte ordering
-* payload size constraints
+* Expected byte ordering
+* Payload size constraints
 * TTN decoder expectations
 
 Because of that, the Dragino was not a plug-and-play black box. It required deliberate configuration decisions.
@@ -272,12 +272,12 @@ After station-side data could be transmitted, the LoRaWAN network layer had to b
 
 ### Main implementation tasks in TTN
 
-* registering the Dragino end device
-* configuring the project application context
-* validating uplink reception through the TTIG gateway
-* defining the uplink message path
-* implementing the payload decoder
-* preparing the MQTT delivery path toward the application side
+* Registering the Dragino end device
+* Configuring the project application context
+* Validating uplink reception through the TTIG gateway
+* Defining the uplink message path
+* Implementing the payload decoder
+* Preparing the MQTT delivery path toward the application side
 
 ### Why this part matters
 
@@ -308,12 +308,12 @@ This happened especially after the project adapted to the practical limitation o
 
 ### Main implementation tasks in Node-RED
 
-* subscribing to TTN MQTT topics
-* receiving uplink messages from the relevant devices
-* extracting the decoded payload object
-* routing each value to the correct dashboard widget
-* creating station-specific visualization layouts
-* keeping the monitoring environment running continuously on the Orange Pi 3 LTS
+* Subscribing to TTN MQTT topics
+* Receiving uplink messages from the relevant devices
+* Extracting the decoded payload object
+* Routing each value to the correct dashboard widget
+* Creating station-specific visualization layouts
+* Keeping the monitoring environment running continuously on the Orange Pi 3 LTS
 
 ### Dashboard implementation
 
@@ -321,11 +321,11 @@ The dashboards were implemented to make station conditions interpretable at a gl
 
 Depending on the station, the Node-RED interface included elements such as:
 
-* status LEDs
-* gauges
-* trend charts
-* text indicators
-* dedicated station panels
+* Status LEDs
+* Gauges
+* Trend charts
+* Text indicators
+* Dedicated station panels
 
 For Mandojana, this included the visualization of pump status, water alarm state, valve state, flow, tank level, well level, and chlorine-related values.
 
@@ -335,11 +335,11 @@ A lot of technical portfolio projects describe dashboards as a cosmetic final st
 
 In this project, Node-RED became a true implementation pivot because it solved several problems at once:
 
-* central reception of MQTT data
-* flexible payload processing
+* Central reception of MQTT data
+* Flexible payload processing
 * SCADA-like visualization
-* rapid dashboard construction
-* operational usability at the control point
+* Rapid dashboard construction
+* Operational usability at the control point
 
 ---
 
@@ -362,18 +362,18 @@ Once Node-RED was receiving and routing the data, the implementation was extende
 
 ### Main implementation tasks
 
-* creating the required ThingSpeak channels
-* publishing processed values from Node-RED to the correct channels
-* organizing field mappings for station variables
-* enabling trend visualization for historical monitoring
-* configuring alarms and events for abnormal conditions
+* Creating the required ThingSpeak channels
+* Publishing processed values from Node-RED to the correct channels
+* Organizing field mappings for station variables
+* Enabling trend visualization for historical monitoring
+* Configuring alarms and events for abnormal conditions
 
 ### Why ThingSpeak was added after Node-RED
 
 This implementation order makes sense:
 
-* first make data visible in the operational dashboard
-* then extend the system with storage, trending, and alert-oriented capabilities
+* First make data visible in the operational dashboard
+* Then extend the system with storage, trending, and alert-oriented capabilities
 
 That sequencing reflects a practical engineering priority: immediate supervision first, deeper historical analysis second.
 
@@ -413,13 +413,13 @@ A technical portfolio should also mention the practical work needed beyond softw
 
 This included:
 
-* powering the PLC and expansion modules with 24 V infrastructure
-* connecting communication modules physically at the station
-* mounting and wiring the relevant interfaces
-* installing the Dragino with antenna and local configuration access
-* checking connectivity in each deployed environment
-* starting up the station-side and central-side environments
-* verifying correct transmission from field to dashboard
+* Powering the PLC and expansion modules with 24 V infrastructure
+* Connecting communication modules physically at the station
+* Mounting and wiring the relevant interfaces
+* Installing the Dragino with antenna and local configuration access
+* Checking connectivity in each deployed environment
+* Starting up the station-side and central-side environments
+* Verifying correct transmission from field to dashboard
 
 This matters because it shows that the project involved real commissioning work, not just architecture design.
 
@@ -439,11 +439,11 @@ A direct internet-connected PLC-based reception path was not practical in the Ar
 
 The implementation had to connect:
 
-* industrial control hardware
-* serial communications
-* wireless LPWAN networking
-* cloud services
-* message-oriented software tools
+* Industrial control hardware
+* Serial communications
+* Wireless LPWAN networking
+* Cloud services
+* Message-oriented software tools
 
 **Adaptation:** the project standardized PLC data structures and aligned Dragino, TTN, and Node-RED logic around that structure.
 
@@ -461,12 +461,12 @@ These kinds of implementation adjustments are worth emphasizing because they sho
 
 The strongest aspects of the implementation are:
 
-* staged validation rather than direct full deployment
-* good use of prototype isolation before PLC integration
-* uniform PLC-side data structuring
-* practical adaptation to infrastructure constraints in the central environment
-* fast creation of usable dashboards through Node-RED
-* successful pilot linking field hardware, LoRaWAN, MQTT, dashboarding, and cloud analysis
+* Staged validation rather than direct full deployment
+* Good use of prototype isolation before PLC integration
+* Uniform PLC-side data structuring
+* Practical adaptation to infrastructure constraints in the central environment
+* Fast creation of usable dashboards through Node-RED
+* Successful pilot linking field hardware, LoRaWAN, MQTT, dashboarding, and cloud analysis
 
 ---
 
@@ -476,11 +476,11 @@ A credible portfolio document should also note the limits of the implemented sol
 
 Relevant limitations include:
 
-* the pilot was validated on a reduced subset of the planned stations
-* the initial use of TTN means the pilot depends on an external network service
+* The pilot was validated on a reduced subset of the planned stations
+* The initial use of TTN means the pilot depends on an external network service
 * Node-RED is excellent for flexible implementation, but not equivalent to a hardened enterprise SCADA platform
-* the solution is optimized for supervisory monitoring, not low-latency control
-* security hardening and private network-server migration are logical next implementation steps
+* The solution is optimized for supervisory monitoring, not low-latency control
+* Security hardening and private network-server migration are logical next implementation steps
 
 ---
 
@@ -512,11 +512,11 @@ The implementation of this project was not just a matter of configuring devices 
 
 What makes the implementation especially valuable as a portfolio project is that it reflects real engineering practice:
 
-* prototype first
-* isolate failures early
-* adapt to infrastructure constraints
-* standardize data structures
-* build an operational pilot before scaling further
+* Prototype first
+* Isolate failures early
+* Adapt to infrastructure constraints
+* Standardize data structures
+* Build an operational pilot before scaling further
 
 That makes this project much stronger than a purely conceptual architecture exercise.
 
