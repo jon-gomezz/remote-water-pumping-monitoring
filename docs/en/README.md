@@ -22,14 +22,14 @@ The solution was conceived around the integration of PLC data acquisition, RS-48
 
 This English documentation is organized as a technical portfolio package covering:
 
-* the industrial problem and project scope
-* the proposed system architecture
-* the selected hardware and communication technologies
-* the telemetry and data flow logic
-* the implementation approach
-* the validation process and observed results
-* deployment considerations
-* lessons learned and future improvements
+* The industrial problem and project scope
+* The proposed system architecture
+* The selected hardware and communication technologies
+* The telemetry and data flow logic
+* The implementation approach
+* The validation process and observed results
+* Deployment considerations
+* Lessons learned and future improvements
 
 ---
 
