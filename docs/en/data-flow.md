@@ -37,13 +37,13 @@ The data pipeline was designed to satisfy a practical monitoring requirement rat
 
 The flow had to:
 
-* collect both digital and analog variables from remote stations
-* preserve a consistent internal structure between stations
-* transmit only the useful information through a constrained long-range wireless link
-* transform the received payload into readable process values
-* route data to dashboards for operators
-* store the information for later analysis and alarm handling
-* support more than one station with a repeatable pattern
+* Collect both digital and analog variables from remote stations
+* Preserve a consistent internal structure between stations
+* Transmit only the useful information through a constrained long-range wireless link
+* Transform the received payload into readable process values
+* Route data to dashboards for operators
+* Store the information for later analysis and alarm handling
+* Support more than one station with a repeatable pattern
 
 Because of that, the data flow is not only about transmission. It is about **structuring, reducing, decoding, and distributing information efficiently**.
 
@@ -55,16 +55,16 @@ The data flow begins inside each pumping station with the acquisition of operati
 
 Depending on the station, these variables can include:
 
-* pump running status
-* pump fault status
-* tank level conditions
-* valve status
-* water shortage alarms
-* network or suction pressure
-* well level
-* tank level
-* flow rate
-* chlorine-related values
+* Pump running status
+* Pump fault status
+* Tank level conditions
+* Valve status
+* Water shortage alarms
+* Network or suction pressure
+* Well level
+* Tank level
+* Flow rate
+* Chlorine-related values
 
 These are the real process signals that operators care about. At this stage, the information is still tied directly to physical equipment and instrumentation.
 
@@ -85,10 +85,10 @@ The general structure described for the stations is organized into **4 words**:
 
 A typical allocation includes:
 
-* pump 1 running / fault bits
-* pump 2 running / fault bits
-* tank level high / low bits
-* spare bits for future use
+* Pump 1 running / fault bits
+* Pump 2 running / fault bits
+* Tank level high / low bits
+* Spare bits for future use
 
 ### Next 2 words: analog inputs
 
@@ -107,11 +107,11 @@ The project does not only transmit data. It first **standardizes** data.
 
 That standardization provides several advantages:
 
-* simpler Modbus access
-* easier byte selection for payload creation
-* more predictable decoding logic in TTN
-* simpler flow design in Node-RED
-* easier scalability when new stations are added
+* Simpler Modbus access
+* Easier byte selection for payload creation
+* More predictable decoding logic in TTN
+* Simpler flow design in Node-RED
+* Easier scalability when new stations are added
 
 Without this structured PLC-side format, the rest of the telemetry chain would become much harder to maintain.
 
@@ -125,17 +125,17 @@ A clear example is **Mandojana**, where the monitored values include:
 
 ### Digital signals
 
-* pump running
-* water shortage alarm
-* valve closed
-* valve open
+* Pump running
+* Water shortage alarm
+* Valve closed
+* Valve open
 
 ### Analog signals
 
-* well level
-* tank level
-* flow
-* chlorine
+* Well level
+* Tank level
+* Flow
+* Chlorine
 
 Other stations use simpler combinations, often focused on pump state and pressure, while some also include tank level signals.
 
@@ -186,10 +186,10 @@ The Dragino does more than forward serial data blindly.
 
 A key part of the data flow is that the Dragino can be configured to:
 
-* send predefined Modbus commands
-* process the returned response
-* select only the relevant bytes
-* build the payload that will be sent to the LoRaWAN server
+* Send predefined Modbus commands
+* Process the returned response
+* Select only the relevant bytes
+* Build the payload that will be sent to the LoRaWAN server
 
 This is a very important efficiency step.
 
@@ -207,10 +207,10 @@ The payload design follows a practical principle:
 
 That means:
 
-* digital states are packed efficiently into bytes or words
-* analog values are placed in known positions
-* unused bytes are excluded when possible
-* byte positions may vary depending on the station configuration
+* Digital states are packed efficiently into bytes or words
+* Analog values are placed in known positions
+* Unused bytes are excluded when possible
+* Byte positions may vary depending on the station configuration
 
 This last point matters a lot: the decoding logic in TTN depends on how the Dragino payload has been defined for each station.
 
@@ -264,10 +264,10 @@ To make the data easier to use, the project includes a decoding step using JavaS
 
 The logic of this stage is:
 
-* read the incoming raw bytes
-* interpret them according to the station payload format
-* reconstruct digital and analog values
-* return the decoded result in a more readable object
+* Read the incoming raw bytes
+* Interpret them according to the station payload format
+* Reconstruct digital and analog values
+* Return the decoded result in a more readable object
 
 This is one of the most valuable parts of the data flow because it avoids pushing low-level byte interpretation into later layers.
 
@@ -276,9 +276,9 @@ This is one of the most valuable parts of the data flow because it avoids pushin
 By decoding at the TTN stage:
 
 * Node-RED receives cleaner data
-* downstream logic becomes simpler
-* dashboards can be built faster
-* the payload becomes more interpretable and maintainable
+* Downstream logic becomes simpler
+* Dashboards can be built faster
+* The payload becomes more interpretable and maintainable
 
 This reduces complexity in the rest of the system.
 
@@ -286,11 +286,11 @@ This reduces complexity in the rest of the system.
 
 A typical decoder:
 
-* combines bytes into words
-* extracts active digital bits
-* interprets analog words
-* scales analog values to engineering meaning when needed
-* returns the result as a decoded payload object
+* Combines bytes into words
+* Extracts active digital bits
+* Interprets analog words
+* Scales analog values to engineering meaning when needed
+* Returns the result as a decoded payload object
 
 That decoded payload then becomes the main input for Node-RED processing.
 
@@ -323,10 +323,10 @@ This is where the data becomes part of the operator-facing supervision environme
 
 MQTT is a strong fit for this project because it:
 
-* is lightweight
-* supports publish/subscribe communication
-* integrates naturally with Node-RED
-* is well suited to multi-device telemetry pipelines
+* Is lightweight
+* Supports publish/subscribe communication
+* Integrates naturally with Node-RED
+* Is well suited to multi-device telemetry pipelines
 
 It acts as the clean delivery mechanism between TTN and the dashboard logic.
 
@@ -348,22 +348,22 @@ Node-RED receives the message, extracts the **decoded payload**, and routes each
 
 This includes sending values to:
 
-* status indicators
+* Status indicators
 * LEDs
-* gauges
-* charts
-* text widgets
-* station-specific views
+* Gauges
+* Charts
+* Text widgets
+* Station-specific views
 
 At this point, the system is no longer dealing with transport. It is dealing with **operator visibility**.
 
 ### What Node-RED does in practice
 
-* receives the MQTT uplink message
-* accesses the decoded payload object
-* extracts the values of interest
-* routes each value to the correct output
-* updates the station dashboard in near real time
+* Receives the MQTT uplink message
+* Accesses the decoded payload object
+* Extracts the values of interest
+* Routes each value to the correct output
+* Updates the station dashboard in near real time
 
 This stage is what turns incoming telemetry into usable supervision.
 
@@ -379,11 +379,11 @@ That makes Node-RED more than a visualization tool.
 
 It becomes:
 
-* the MQTT subscriber
-* the decoded-payload processor
-* the routing layer
-* the dashboard layer
-* the operational entry point for centralized monitoring
+* The MQTT subscriber
+* The decoded-payload processor
+* The routing layer
+* The dashboard layer
+* The operational entry point for centralized monitoring
 
 This is a strong engineering story for the portfolio because it shows adaptation to real deployment constraints.
 
@@ -408,13 +408,13 @@ After routing, the variables appear in dashboards designed for real-time monitor
 
 These dashboards can show:
 
-* pump state
-* alarms
-* valve position
-* level trends
-* flow trends
-* pressure indicators
-* chlorine or water-quality-related values
+* Pump state
+* Alarms
+* Valve position
+* Level trends
+* Flow trends
+* Pressure indicators
+* Chlorine or water-quality-related values
 
 This stage is essential because it closes the loop between technical telemetry and operational decision-making.
 
@@ -430,17 +430,17 @@ This creates a second consumption path for the same telemetry.
 
 ### Node-RED provides
 
-* immediate monitoring
-* station dashboards
-* operator-facing supervision
+* Immediate monitoring
+* Station dashboards
+* Operator-facing supervision
 
 ### ThingSpeak provides
 
-* historical storage
-* cloud visualization
-* charts and trends
-* additional analysis
-* alarm and notification possibilities
+* Historical storage
+* Cloud visualization
+* Charts and trends
+* Additional analysis
+* Alarm and notification possibilities
 
 This is an important architectural strength because the project does not depend on a single end platform. It separates short-term operational visualization from longer-term storage and analysis.
 
@@ -465,10 +465,10 @@ The project was designed around **intermediate refresh intervals**, roughly in t
 
 This has important implications for the data flow:
 
-* the system is suitable for monitoring and supervision
-* it supports timely detection of operational issues
-* it is not intended for high-speed closed-loop control
-* the communication and processing stack is aligned with supervisory needs rather than sub-second automation
+* The system is suitable for monitoring and supervision
+* It supports timely detection of operational issues
+* It is not intended for high-speed closed-loop control
+* The communication and processing stack is aligned with supervisory needs rather than sub-second automation
 
 This is exactly the kind of engineering clarity that improves a portfolio project.
 
@@ -480,12 +480,12 @@ The system was conceived to support several stations, not just one.
 
 That means the full data flow is repeatable:
 
-1. each station structures data locally in the PLC
-2. each station exposes values through Modbus RTU
-3. each station transmits through a Dragino node
+1. Each station structures data locally in the PLC
+2. Each station exposes values through Modbus RTU
+3. Each station transmits through a Dragino node
 4. TTN receives messages from multiple devices
 5. Node-RED identifies and routes incoming station data
-6. dashboards and storage channels are updated accordingly
+6. Dashboards and storage channels are updated accordingly
 
 This repeatability is one of the strongest aspects of the project, because it shows a scalable telemetry pattern rather than a one-off prototype.
 
@@ -495,12 +495,12 @@ This repeatability is one of the strongest aspects of the project, because it sh
 
 The data flow is a strong design because it balances several constraints at once:
 
-* industrial compatibility at acquisition level
-* compact payload transmission over LoRaWAN
-* readable decoding before dashboard processing
-* centralized MQTT-based delivery
-* operator-focused visualization in Node-RED
-* historical analysis in ThingSpeak
+* Industrial compatibility at acquisition level
+* Compact payload transmission over LoRaWAN
+* Readable decoding before dashboard processing
+* Centralized MQTT-based delivery
+* Operator-focused visualization in Node-RED
+* Historical analysis in ThingSpeak
 
 In other words, the flow is efficient not because any single layer is complex, but because all layers are aligned.
 
@@ -510,12 +510,12 @@ In other words, the flow is efficient not because any single layer is complex, b
 
 The strongest aspects of the flow are:
 
-* structured PLC-side data formatting
-* efficient selection of useful bytes before transmission
-* decoding logic moved upstream into TTN
-* simple downstream handling in Node-RED
-* separation between real-time dashboards and historical storage
-* repeatable pattern for several pumping stations
+* Structured PLC-side data formatting
+* Efficient selection of useful bytes before transmission
+* Decoding logic moved upstream into TTN
+* Simple downstream handling in Node-RED
+* Separation between real-time dashboards and historical storage
+* Repeatable pattern for several pumping stations
 
 ---
 
@@ -525,11 +525,11 @@ A realistic portfolio document should also acknowledge the limitations of the fl
 
 Relevant trade-offs include:
 
-* payload structure may vary between stations, which increases decoder maintenance effort
+* Payload structure may vary between stations, which increases decoder maintenance effort
 * LoRaWAN payload size constraints require careful byte selection
-* the flow is intended for supervision, not fast control action
-* the initial use of TTN introduces dependence on an external network service
-* security hardening can be expanded in future iterations, especially around public-network usage and application-layer protections
+* The flow is intended for supervision, not fast control action
+* The initial use of TTN introduces dependence on an external network service
+* Security hardening can be expanded in future iterations, especially around public-network usage and application-layer protections
 
 These limitations do not weaken the project. They make the explanation more credible.
 
@@ -554,15 +554,15 @@ The data flow of this project is best understood as a staged transformation pipe
 
 The system does not simply transmit sensor values from one place to another. It:
 
-* acquires process information
-* standardizes it inside the PLC
-* reads it through Modbus RTU
-* compresses it into a useful payload
-* transmits it over LoRaWAN
-* decodes it in TTN
-* routes it through MQTT to Node-RED
-* visualizes it for operators
-* stores it in ThingSpeak for further analysis
+* Acquires process information
+* Standardizes it inside the PLC
+* Reads it through Modbus RTU
+* Compresses it into a useful payload
+* Transmits it over LoRaWAN
+* Decodes it in TTN
+* Routes it through MQTT to Node-RED
+* Visualizes it for operators
+* Stores it in ThingSpeak for further analysis
 
 That end-to-end logic is one of the main reasons this project works well as a technical portfolio example.
 
