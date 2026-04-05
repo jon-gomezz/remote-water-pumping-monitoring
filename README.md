@@ -4,11 +4,13 @@
 
 This project presents an industrial IoT solution for the remote monitoring of water pumping stations connected to the supply system of Vitoria-Gasteiz. The system was designed to centralize the supervision of geographically distributed stations, improve incident response, reduce manual inspections, and provide near real-time visibility of critical operating variables.
 
+<p align="center">
+  <img src="assets/images/fig-08-solution-diagram.png" alt="Solution diagram" width="500">
+</p>
+
 The architecture combines industrial control hardware and lightweight communication technologies: Siemens S7-1200 PLCs for signal acquisition, Modbus RTU for local communication, Dragino RS485-LN devices for LoRaWAN transmission, The Things Network (TTN) as the network server, MQTT for message transport, Node-RED for monitoring dashboards, and ThingSpeak for cloud visualization and data analysis.
 
 This repository is structured as a portfolio-oriented reconstruction of a real engineering project developed during my internship, with the goal of documenting the technical architecture, design decisions, implementation logic, and lessons learned in a professional and accessible way.
-
-![Solution diagram](assets/images/fig-08-solution-diagram.png)
 
 ## Problem Statement
 
@@ -82,6 +84,10 @@ Depending on the station, the monitored variables could include:
 - Chlorine concentration.
 
 This combination of digital and analog variables made it possible to obtain a clearer picture of the operational state of each remote installation.
+
+<p align="center">
+  <img src="assets/images/fig-09-node-red-dashboard.png" alt="Node-RED dashboard" width="900">
+</p>
 
 ## My Contribution
 
