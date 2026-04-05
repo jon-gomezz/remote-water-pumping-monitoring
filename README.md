@@ -46,12 +46,12 @@ At a high level, the monitored signals are acquired from the industrial control 
 
 This repository focuses on:
 
-* industrial context and problem definition
-* system architecture and communication flow
-* hardware and protocol selection
-* implementation logic and deployment decisions
-* validation approach and observed results
-* engineering lessons learned
+* Industrial context and problem definition
+* System architecture and communication flow
+* Hardware and protocol selection
+* Implementation logic and deployment decisions
+* Validation approach and observed results
+* Engineering lessons learned
 
 It intentionally avoids reproducing the original internship report in full academic format. Instead, the content has been reorganized to highlight practical engineering decisions, architecture design, implementation details, and technical outcomes.
 
@@ -106,15 +106,6 @@ remote-water-pumping-monitoring/
 │       ├── validation-and-results.md
 │       ├── deployment-notes.md
 │       └── lessons-learned.md
-├── examples/
-│   ├── ttn-payload-decoder/
-│   │   └── sample-decoder.js
-│   ├── node-red/
-│   │   └── sample-flow.json
-│   └── plc-data-mapping/
-│       └── signal-map-example.md
-└── references/
-    └── source-context.md
 ```
 
 ---
@@ -127,7 +118,6 @@ remote-water-pumping-monitoring/
 * [Architecture](docs/en/architecture.md)
 * [Hardware and communications](docs/en/hardware-and-communications.md)
 * [Data flow](docs/en/data-flow.md)
-* [Implementation](docs/en/implementation.md)
 * [Validation and results](docs/en/validation-and-results.md)
 * [Deployment notes](docs/en/deployment-notes.md)
 * [Lessons learned](docs/en/lessons-learned.md)
@@ -138,7 +128,6 @@ remote-water-pumping-monitoring/
 * [Arquitectura](docs/es/architecture.md)
 * [Hardware y comunicaciones](docs/es/hardware-and-communications.md)
 * [Flujo de datos](docs/es/data-flow.md)
-* [Implementación](docs/es/implementation.md)
 * [Validación y resultados](docs/es/validation-and-results.md)
 * [Notas de despliegue](docs/es/deployment-notes.md)
 * [Lecciones aprendidas](docs/es/lessons-learned.md)
@@ -149,11 +138,11 @@ remote-water-pumping-monitoring/
 
 This project demonstrates the ability to:
 
-* translate a real industrial problem into a deployable monitoring architecture
-* connect OT and IoT layers in a coherent system
-* work with industrial protocols and telemetry pipelines
-* document technical decisions clearly for engineering audiences
-* convert internship experience into a professional portfolio asset
+* Translate a real industrial problem into a deployable monitoring architecture
+* Connect OT and IoT layers in a coherent system
+* Work with industrial protocols and telemetry pipelines
+* Document technical decisions clearly for engineering audiences
+* Convert internship experience into a professional portfolio asset
 
 ---
 
@@ -163,10 +152,10 @@ This repository is being progressively documented and refined as a technical por
 
 Current focus:
 
-* repository structure definition
-* bilingual technical documentation
-* architecture visuals and supporting diagrams
-* selected implementation examples
+* Repository structure definition
+* Bilingual technical documentation
+* Architecture visuals and supporting diagrams
+* Selected implementation examples
 
 ---
 
