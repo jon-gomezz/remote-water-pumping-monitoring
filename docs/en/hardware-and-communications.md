@@ -12,10 +12,10 @@ The goal is not to reproduce a catalog-style list of devices, but to show how ea
 
 At station level, the system had to achieve four practical functions:
 
-1. acquire field signals reliably
-2. expose those signals through an industrial communication interface
-3. convert station data into long-range wireless telemetry
-4. deliver the information to a centralized monitoring environment
+1. Acquire field signals reliably
+2. Expose those signals through an industrial communication interface
+3. Convert station data into long-range wireless telemetry
+4. Deliver the information to a centralized monitoring environment
 
 Because of that, the hardware was selected as a layered stack rather than as isolated devices.
 
@@ -58,17 +58,17 @@ The Siemens S7-1214C acts as the main industrial acquisition and control device 
 
 Its role in the project is to:
 
-* read digital and analog process signals
-* organize the monitored variables into a consistent internal data structure
-* provide a robust industrial interface between field instrumentation and the telemetry layer
-* support future extension through additional programming and modular configuration
+* Read digital and analog process signals
+* Organize the monitored variables into a consistent internal data structure
+* Provide a robust industrial interface between field instrumentation and the telemetry layer
+* Support future extension through additional programming and modular configuration
 
 This was an appropriate choice for several reasons:
 
-* it is industrial-grade hardware well suited to water infrastructure environments
-* it supports integration with existing control logic
-* it provides enough local capability for structured signal handling
-* it can be programmed and configured through a standard engineering workflow using TIA Portal
+* It is industrial-grade hardware well suited to water infrastructure environments
+* It supports integration with existing control logic
+* It provides enough local capability for structured signal handling
+* It can be programmed and configured through a standard engineering workflow using TIA Portal
 
 In practical terms, the PLC is the component that turns raw operational conditions into structured data ready for transmission.
 
@@ -79,10 +79,10 @@ The PLC is programmed through its Ethernet interface using **TIA Portal V16**.
 From a portfolio perspective, this matters because it shows that the project was not only about communications. It also required working with a standard industrial automation engineering environment for:
 
 * PLC configuration
-* communication parameter setup
-* data-block design
-* variable mapping
-* integration testing
+* Communication parameter setup
+* Data-block design
+* Variable mapping
+* Integration testing
 
 ---
 
@@ -104,10 +104,10 @@ RS-485 is widely used in industrial environments because it is simple, establish
 
 For this project, RS-485 was suitable because:
 
-* it fits well with Modbus RTU communication
-* it is common in industrial control integrations
-* it supports a simple and robust connection between the PLC and the telemetry converter
-* it avoids unnecessary architectural complexity at station level
+* It fits well with Modbus RTU communication
+* It is common in industrial control integrations
+* It supports a simple and robust connection between the PLC and the telemetry converter
+* It avoids unnecessary architectural complexity at station level
 
 ---
 
@@ -121,11 +121,11 @@ Functionally, it acts as the boundary device between the OT world and the LPWAN/
 
 Its role includes:
 
-* querying the PLC through RS-485 / Modbus RTU
-* receiving the requested values from the PLC
-* building the payload to be transmitted
-* sending the resulting data through LoRaWAN
-* receiving downlink commands when required
+* Querying the PLC through RS-485 / Modbus RTU
+* Receiving the requested values from the PLC
+* Building the payload to be transmitted
+* Sending the resulting data through LoRaWAN
+* Receiving downlink commands when required
 
 In the local communication relationship, the Dragino acts as the **Modbus master**, while the PLC behaves as the **slave**.
 
@@ -137,10 +137,10 @@ This device was especially useful in the project because it allows existing RS-4
 
 That gives the solution several advantages:
 
-* reuse of industrial hardware already present or already suitable for the process
-* lower integration effort than replacing the PLC with a native IoT controller
-* cleaner separation between control logic and telemetry transport
-* easier scaling through a repeatable station-side pattern
+* Reuse of industrial hardware already present or already suitable for the process
+* Lower integration effort than replacing the PLC with a native IoT controller
+* Cleaner separation between control logic and telemetry transport
+* Easier scaling through a repeatable station-side pattern
 
 ### Configuration Approach
 
@@ -158,9 +158,9 @@ The gateway used in the project is the **The Things Indoor Gateway (TTIG)**.
 
 Its role is to:
 
-* receive LoRa radio messages from Dragino devices
-* convert those radio messages into network traffic
-* forward the data to The Things Network (TTN) over internet connectivity
+* Receive LoRa radio messages from Dragino devices
+* Convert those radio messages into network traffic
+* Forward the data to The Things Network (TTN) over internet connectivity
 
 This makes the TTIG the radio-to-network bridge of the system.
 
@@ -170,9 +170,9 @@ The TTIG was a practical choice for the pilot because it is relatively simple to
 
 That said, it is also important to be precise about its constraints:
 
-* it is closely tied to the TTN ecosystem
-* it is convenient for pilot and prototype deployment
-* it is less flexible than more open or industrial gateway alternatives if the architecture later migrates to a different private network-server strategy
+* It is closely tied to the TTN ecosystem
+* It is convenient for pilot and prototype deployment
+* It is less flexible than more open or industrial gateway alternatives if the architecture later migrates to a different private network-server strategy
 
 That is worth mentioning in a portfolio because it shows realistic system judgment rather than presenting every component as universally optimal.
 
@@ -186,9 +186,9 @@ The **Orange Pi 3 LTS** is used as the support computing platform that keeps Nod
 
 Its role is straightforward but operationally important:
 
-* host the processing and visualization environment
-* provide a persistent runtime for MQTT reception and dashboard logic
-* keep the central monitoring layer available without depending on a general-purpose engineering workstation
+* Host the processing and visualization environment
+* Provide a persistent runtime for MQTT reception and dashboard logic
+* Keep the central monitoring layer available without depending on a general-purpose engineering workstation
 
 This matters because the solution is not only a cloud integration concept. It also includes a dedicated runtime environment for operational monitoring.
 
@@ -202,8 +202,8 @@ From a portfolio perspective, this is useful to mention because it reinforces th
 
 At some stations, additional I/O capacity may also be required depending on the number of monitored signals. This introduces an important design consideration:
 
-* the communications architecture must scale not only across stations
-* it must also scale inside each station according to the local signal count and instrumentation mix
+* The communications architecture must scale not only across stations
+* It must also scale inside each station according to the local signal count and instrumentation mix
 
 ---
 
@@ -232,16 +232,16 @@ Each layer solves a different problem:
 
 Why it fits the project:
 
-* it is a standard and widely understood industrial protocol
-* it works naturally over RS-485
-* it is appropriate for master-slave polling of structured registers
-* it supports reliable exchange of process data in industrial contexts
+* It is a standard and widely understood industrial protocol
+* It works naturally over RS-485
+* It is appropriate for master-slave polling of structured registers
+* It supports reliable exchange of process data in industrial contexts
 
 What it contributes:
 
-* deterministic request/response structure
-* straightforward register-based data acquisition
-* compatibility with PLC-centered industrial designs
+* Deterministic request/response structure
+* Straightforward register-based data acquisition
+* Compatibility with PLC-centered industrial designs
 
 Its main limitation in this project context is that it is a traditional serial protocol with limited built-in security and modest communication speed compared with modern Ethernet-based alternatives. Still, for station-side telemetry polling, it is an appropriate and realistic choice.
 
@@ -251,11 +251,11 @@ Its main limitation in this project context is that it is a traditional serial p
 
 Why it was chosen:
 
-* large coverage range
-* low operating cost
-* low power characteristics
-* good fit for geographically distributed infrastructure
-* suitability for a pilot that may later scale to multiple stations
+* Large coverage range
+* Low operating cost
+* Low power characteristics
+* Good fit for geographically distributed infrastructure
+* Suitability for a pilot that may later scale to multiple stations
 
 In this project, LoRa is not just a generic wireless link. It is the enabling technology that makes remote pumping station coverage practical without expensive communications infrastructure.
 
@@ -265,10 +265,10 @@ In this project, LoRa is not just a generic wireless link. It is the enabling te
 
 Why it matters:
 
-* it provides device registration and network organization
-* it supports scalable many-device architectures
-* it separates end devices, gateways, network management, and applications
-* it is much more appropriate than ad hoc direct LoRa links for centralized supervision
+* It provides device registration and network organization
+* It supports scalable many-device architectures
+* It separates end devices, gateways, network management, and applications
+* It is much more appropriate than ad hoc direct LoRa links for centralized supervision
 
 The project specifically adopts a **LoRaWAN architecture with an independent network server**, which improves centralized management and scalability.
 
@@ -278,10 +278,10 @@ The project specifically adopts a **LoRaWAN architecture with an independent net
 
 Why it was chosen:
 
-* lightweight publish/subscribe model
-* suitable for IoT telemetry distribution
-* efficient for message-oriented integration
-* easy to connect with Node-RED flows and dashboards
+* Lightweight publish/subscribe model
+* Suitable for IoT telemetry distribution
+* Efficient for message-oriented integration
+* Easy to connect with Node-RED flows and dashboards
 
 In practical terms, MQTT is what makes the handoff between the LoRaWAN environment and the processing/visualization environment clean and flexible.
 
@@ -294,7 +294,7 @@ A useful way to explain the system is to map each component to the communication
 ### Acquisition layer
 
 * PLC I/O
-* local signal wiring
+* Local signal wiring
 
 ### Industrial communication layer
 
@@ -331,11 +331,11 @@ This layered framing is often clearer than describing the system as a single lis
 
 The combination of industrial serial communication and LPWAN telemetry was a good fit for the problem because it balances:
 
-* **industrial compatibility** at the station side
-* **low-cost long-range transmission** across remote assets
-* **centralized supervision** at the system level
-* **repeatability** across multiple pumping stations
-* **expandability** for future deployments
+* **Industrial compatibility** at the station side
+* **Low-cost long-range transmission** across remote assets
+* **Centralized supervision** at the system level
+* **Repeatability** across multiple pumping stations
+* **Expandability** for future deployments
 
 It is especially valuable as a portfolio example because it shows that the design did not rely on a single technology trend. Instead, it combined mature industrial communication and modern IoT networking in a coherent way.
 
@@ -345,11 +345,11 @@ It is especially valuable as a portfolio example because it shows that the desig
 
 The strongest hardware and communications decisions in the project are:
 
-* use of industrial PLCs instead of fragile hobby-grade edge hardware at the station side
-* a clean conversion point between Modbus/RS-485 and LoRaWAN
-* a network architecture suited to more than one remote asset
-* efficient message delivery to Node-RED through MQTT
-* a central runtime platform that keeps dashboards continuously available
+* Use of industrial PLCs instead of fragile hobby-grade edge hardware at the station side
+* A clean conversion point between Modbus/RS-485 and LoRaWAN
+* A network architecture suited to more than one remote asset
+* Efficient message delivery to Node-RED through MQTT
+* A central runtime platform that keeps dashboards continuously available
 
 ---
 
@@ -360,10 +360,10 @@ A credible technical portfolio should also acknowledge limitations.
 Relevant limitations include:
 
 * Modbus RTU is simple and reliable, but limited in speed and native security
-* the TTIG is convenient for TTN pilots, but less flexible for future private-network migration
-* the solution is designed for monitoring and supervisory visibility, not for fast closed-loop control
-* public-network dependence at the network-server level may not be ideal for a hardened production environment
-* security hardening can be expanded significantly in future iterations
+* The TTIG is convenient for TTN pilots, but less flexible for future private-network migration
+* The solution is designed for monitoring and supervisory visibility, not for fast closed-loop control
+* Public-network dependence at the network-server level may not be ideal for a hardened production environment
+* Security hardening can be expanded significantly in future iterations
 
 ---
 
