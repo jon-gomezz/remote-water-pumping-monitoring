@@ -16,10 +16,10 @@ In this project, deployment is not limited to installing software on one machine
 
 It involves coordinating several layers at the same time:
 
-* field-side industrial hardware
-* serial communication configuration
+* Field-side industrial hardware
+* Serial communication configuration
 * LoRaWAN device registration and connectivity
-* central MQTT reception
+* Central MQTT reception
 * Node-RED dashboard operation
 * ThingSpeak publication and monitoring support
 
@@ -46,8 +46,8 @@ The broader project vision considered several pumping stations, but the practica
 
 The deployment context can be summarized as:
 
-* **station side:** Mandojana
-* **central supervision side:** Araka
+* **Station side:** Mandojana
+* **Central supervision side:** Araka
 
 This is important when presenting the repository.
 
@@ -99,11 +99,11 @@ The PLC should be treated as the structured acquisition core of the station.
 
 Deployment considerations include:
 
-* correct connection of digital and analog signals
-* correct supply voltage and industrial power conditions
-* proper organization of field wiring
-* clear mapping between physical signals and PLC variables
-* enough I/O capacity for the selected station
+* Correct connection of digital and analog signals
+* Correct supply voltage and industrial power conditions
+* Proper organization of field wiring
+* Clear mapping between physical signals and PLC variables
+* Enough I/O capacity for the selected station
 
 A deployment lesson from this type of system is that signal clarity matters as much as communication setup. If the input mapping is inconsistent, the telemetry chain may work technically while still delivering misleading process information.
 
@@ -113,12 +113,12 @@ The CM 1241 must be installed and parameterized consistently with the intended s
 
 Important deployment checks:
 
-* baud rate
-* parity
-* data bits
-* stop bits
-* station behavior as Modbus slave
-* consistency with Dragino-side request definitions
+* Baud rate
+* Parity
+* Data bits
+* Stop bits
+* Station behavior as Modbus slave
+* Consistency with Dragino-side request definitions
 
 Even small mismatches in serial parameters can prevent successful polling, so this stage should always be verified before looking for problems in LoRaWAN or MQTT.
 
@@ -159,22 +159,22 @@ The Dragino RS485-LN is one of the most sensitive deployment elements because it
 
 ### Practical installation points
 
-* ensure stable power supply
-* verify RS-485 wiring polarity and terminal correctness
-* connect the antenna properly
-* confirm that the physical location is suitable for radio transmission
-* keep local access available during commissioning when possible
+* Ensure stable power supply
+* Verify RS-485 wiring polarity and terminal correctness
+* Connect the antenna properly
+* Confirm that the physical location is suitable for radio transmission
+* Keep local access available during commissioning when possible
 
 ### Configuration notes
 
 During deployment, the Dragino configuration should be reviewed carefully:
 
 * Modbus request definition
-* polling interval
-* selected response bytes
-* payload size
+* Polling interval
+* Selected response bytes
+* Payload size
 * LoRaWAN join and network parameters
-* remote downlink behavior if used
+* Remote downlink behavior if used
 
 ### Deployment risk to avoid
 
@@ -184,8 +184,8 @@ That is not always true.
 
 The deployment check must validate both:
 
-1. correct register reading from the PLC
-2. correct selection and transmission of the intended bytes
+1. Correct register reading from the PLC
+2. Correct selection and transmission of the intended bytes
 
 ---
 
@@ -197,10 +197,10 @@ The gateway should be installed in a location that supports reliable radio recep
 
 Deployment considerations include:
 
-* distance and line-of-sight conditions
-* physical obstacles
-* indoor vs outdoor attenuation
-* stability of internet connectivity toward TTN
+* Distance and line-of-sight conditions
+* Physical obstacles
+* Indoor vs outdoor attenuation
+* Stability of internet connectivity toward TTN
 
 Even though the project uses a pilot-friendly LoRaWAN architecture, radio coverage still has to be treated as an operational deployment concern, not as an assumption.
 
@@ -210,11 +210,11 @@ For deployment, each end device should be clearly identified and documented.
 
 Useful notes include:
 
-* device name
-* station name
-* application context
-* decoder version used
-* topic structure expected downstream
+* Device name
+* Station name
+* Application context
+* Decoder version used
+* Topic structure expected downstream
 
 This matters especially when the project grows from one pilot station to several monitored assets.
 
@@ -224,9 +224,9 @@ The TTN decoder logic should be treated as part of the deployed system, not as a
 
 A good deployment habit is to track:
 
-* which decoder version is active
-* which byte structure it expects
-* which station payload it corresponds to
+* Which decoder version is active
+* Which byte structure it expects
+* Which station payload it corresponds to
 
 Without this discipline, multi-station maintenance becomes much harder.
 
@@ -253,11 +253,11 @@ The Orange Pi 3 LTS plays a practical but important deployment role because it h
 
 Important checks:
 
-* continuous power availability
-* stable operating environment
-* network access for MQTT and external services
-* automatic service startup where possible
-* sufficient monitoring of runtime state
+* Continuous power availability
+* Stable operating environment
+* Network access for MQTT and external services
+* Automatic service startup where possible
+* Sufficient monitoring of runtime state
 
 The main deployment idea here is simple: the dashboards are only useful if the central runtime is continuously available.
 
@@ -267,11 +267,11 @@ Node-RED should be treated as a production-facing operational component in the p
 
 Useful deployment notes include:
 
-* verify subscription to the correct TTN MQTT topics
-* validate message parsing against the active decoder output
-* check that every variable reaches the intended widget
-* organize flows clearly by station or functional purpose
-* keep a backup/export of the flow definitions
+* Verify subscription to the correct TTN MQTT topics
+* Validate message parsing against the active decoder output
+* Check that every variable reaches the intended widget
+* Organize flows clearly by station or functional purpose
+* Keep a backup/export of the flow definitions
 
 This last point is especially important in practice. Even in a portfolio pilot, exported Node-RED flows are part of the deployable system and should be preserved as configuration assets.
 
@@ -281,10 +281,10 @@ A deployment is not successful just because data appears somewhere on screen.
 
 The dashboards should also be:
 
-* easy to interpret quickly
-* consistent across stations
-* explicit about units and variable meaning
-* visually clear for alarms and key states
+* Easy to interpret quickly
+* Consistent across stations
+* Explicit about units and variable meaning
+* Visually clear for alarms and key states
 
 This matters because the operational value of the system depends on usability as much as connectivity.
 
@@ -296,11 +296,11 @@ ThingSpeak extends the system from live supervision into storage and historical 
 
 ### Practical deployment checks
 
-* confirm that the correct channel exists for the intended station or variable group
-* map fields consistently to the transmitted values
-* verify successful publication from Node-RED
-* validate chart readability and historical continuity
-* configure alerts only after confirming stable incoming data
+* Confirm that the correct channel exists for the intended station or variable group
+* Map fields consistently to the transmitted values
+* Verify successful publication from Node-RED
+* Validate chart readability and historical continuity
+* Configure alerts only after confirming stable incoming data
 
 ### Field-mapping discipline
 
@@ -329,16 +329,16 @@ Place this image after the central-side deployment sections.
 
 A practical commissioning sequence for this project would be:
 
-1. verify PLC power, wiring, and variable mapping
-2. verify CM 1241 serial settings
-3. verify Dragino power, antenna, and RS-485 connectivity
-4. test Modbus polling locally
-5. verify TTN device registration and uplink arrival
-6. verify payload decoding correctness
-7. verify MQTT delivery to Node-RED
-8. verify dashboard updates in Node-RED
-9. verify publication to ThingSpeak
-10. verify end-to-end monitoring continuity over time
+1. Verify PLC power, wiring, and variable mapping
+2. Verify CM 1241 serial settings
+3. Verify Dragino power, antenna, and RS-485 connectivity
+4. Test Modbus polling locally
+5. Verify TTN device registration and uplink arrival
+6. Verify payload decoding correctness
+7. Verify MQTT delivery to Node-RED
+8. Verify dashboard updates in Node-RED
+9. Verify publication to ThingSpeak
+10. Verify end-to-end monitoring continuity over time
 
 This order matters because it moves from the station outward, reducing troubleshooting ambiguity.
 
@@ -350,37 +350,37 @@ This order matters because it moves from the station outward, reducing troublesh
 
 Possible causes:
 
-* no TTN uplink is arriving
+* No TTN uplink is arriving
 * MQTT credentials or topic subscription are incorrect
-* the decoder output format changed
-* the flow is extracting the wrong property path
+* The decoder output format changed
+* The flow is extracting the wrong property path
 
 ### If TTN receives uplinks but values are wrong
 
 Possible causes:
 
-* incorrect PLC register mapping
-* wrong Modbus address or byte order
-* wrong Dragino byte selection
-* outdated or mismatched decoder logic
+* Incorrect PLC register mapping
+* Wrong Modbus address or byte order
+* Wrong Dragino byte selection
+* Outdated or mismatched decoder logic
 
 ### If Modbus polling fails
 
 Possible causes:
 
 * RS-485 wiring issue
-* baud rate mismatch
-* parity mismatch
+* Baud rate mismatch
+* Parity mismatch
 * PLC not behaving as expected as slave
-* wrong request definition in the Dragino
+* Wrong request definition in the Dragino
 
 ### If dashboards update but historical storage is wrong
 
 Possible causes:
 
-* incorrect ThingSpeak field mapping
-* partial publication logic in Node-RED
-* field reuse without documentation
+* Incorrect ThingSpeak field mapping
+* Partial publication logic in Node-RED
+* Field reuse without documentation
 
 This troubleshooting framing is useful because it keeps the engineer thinking in layers instead of guessing randomly.
 
@@ -418,8 +418,8 @@ Useful artifacts include:
 * TTN device and decoder definitions
 * Node-RED flow exports
 * ThingSpeak channel-field mapping
-* station naming conventions
-* commissioning checklist and test notes
+* Station naming conventions
+* Commissioning checklist and test notes
 
 Even if the repository only includes simplified examples, keeping this mindset improves the professional quality of the project.
 
@@ -442,12 +442,12 @@ Place this image near the end of the document, before the conclusion.
 
 A few practical rules summarize the most important deployment lessons:
 
-* validate each layer before moving to the next one
-* keep data structures consistent across PLC, Dragino, TTN, and Node-RED
-* treat decoder logic as a versioned deployment artifact
-* organize stations with clear naming and mapping conventions
-* design dashboards for operational clarity, not only technical completeness
-* document configuration decisions while deploying, not after problems appear
+* Validate each layer before moving to the next one
+* Keep data structures consistent across PLC, Dragino, TTN, and Node-RED
+* Treat decoder logic as a versioned deployment artifact
+* Organize stations with clear naming and mapping conventions
+* Design dashboards for operational clarity, not only technical completeness
+* Document configuration decisions while deploying, not after problems appear
 
 These principles are small, but they make a major difference in distributed telemetry systems.
 
@@ -459,9 +459,9 @@ The deployment of this monitoring solution depends on much more than installing 
 
 What the pilot demonstrates is that this alignment is achievable in practice when the system is deployed in a disciplined way:
 
-* station signals are mapped clearly
-* the PLC exposes structured data
-* the Dragino sends the correct payload
+* Station signals are mapped clearly
+* The PLC exposes structured data
+* The Dragino sends the correct payload
 * TTN decodes it consistently
 * Node-RED presents it clearly
 * ThingSpeak stores it meaningfully
