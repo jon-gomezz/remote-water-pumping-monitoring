@@ -4,6 +4,11 @@
 
 This section contains the full English documentation for a technical portfolio project based on a real industrial internship case involving the remote monitoring of water pumping stations.
 
+<p align="center">
+  <img src="/assets/images/readme/system-architecture.png" alt="System architecture" width="400"><br>
+  <em>High-level architecture of the remote water pumping monitoring system.</em>
+</p>
+
 The project focuses on how geographically distributed pumping facilities can be monitored remotely by combining industrial automation, long-range wireless communications, IoT messaging, and cloud-based visualization tools.
 
 Rather than reproducing the original academic report as-is, this documentation reorganizes the work into a portfolio-oriented technical narrative focused on architecture, implementation decisions, system integration, validation, and engineering conclusions.
@@ -104,21 +109,6 @@ The project can be understood as a telemetry pipeline with the following logic:
 * Node-RED
 * ThingSpeak
 * Orange Pi support environment
-
----
-
-## Suggested Visual Entry Point
-
-> Suggested image location: `../../assets/images/overview/system-architecture.png`
-
-```md
-![System architecture](../../assets/images/overview/system-architecture.png)
-*Figure 1. High-level architecture of the remote water pumping monitoring system.*
-```
-
-This figure should appear near the top of the page, just after the overview section, because it gives the reader an immediate understanding of the complete system.
-
----
 
 ## Recommended Reading Order
 
