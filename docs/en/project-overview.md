@@ -16,11 +16,11 @@ Water pumping stations are critical assets in drinking water supply systems. The
 
 In this case, the monitored infrastructure is distributed across different remote locations. This creates several operational difficulties:
 
-* supervision is decentralized
-* technical staff may need to travel frequently to inspect equipment
-* fault detection may be delayed when there is no centralized visibility
-* process variables are harder to compare and analyze across stations
-* response times can worsen when operational information is fragmented
+* Supervision is decentralized
+* Technical staff may need to travel frequently to inspect equipment
+* Fault detection may be delayed when there is no centralized visibility
+* Process variables are harder to compare and analyze across stations
+* Response times can worsen when operational information is fragmented
 
 Because of this, the project was framed as a monitoring and data-centralization initiative aimed at improving visibility, reducing unnecessary travel, and enabling faster operational response.
 
@@ -79,16 +79,16 @@ The overall solution was conceived to support multiple pumping stations and a mi
 
 Depending on the station, the monitored variables may include:
 
-* pump running status
-* pump fault signals
-* valve status
-* water shortage alarms
-* tank level signals
-* well level measurements
-* network pressure
-* suction pressure
-* flow measurements
-* chlorine-related process values
+* Pump running status
+* Pump fault signals
+* Valve status
+* Water shortage alarms
+* Tank level signals
+* Well level measurements
+* Network pressure
+* Suction pressure
+* Flow measurements
+* Chlorine-related process values
 
 The project was planned with several stations in mind, while the pilot validation focused on a reduced set of locations.
 
@@ -108,12 +108,12 @@ This is an important point in the portfolio version of the project: the emphasis
 
 The proposed architecture addressed key operational needs:
 
-* it enabled centralized visibility across remote assets
-* it reduced dependence on manual supervision
-* it used long-range communication suitable for geographically dispersed infrastructure
-* it supported near real-time monitoring through intermediate refresh intervals
-* it allowed simultaneous capture of multiple stations
-* it created a scalable basis for future expansion
+* It enabled centralized visibility across remote assets
+* It reduced dependence on manual supervision
+* It used long-range communication suitable for geographically dispersed infrastructure
+* It supported near real-time monitoring through intermediate refresh intervals
+* It allowed simultaneous capture of multiple stations
+* It created a scalable basis for future expansion
 
 This makes the project especially relevant as an example of OT/IoT integration in an industrial environment.
 
