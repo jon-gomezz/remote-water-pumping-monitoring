@@ -8,6 +8,8 @@ The architecture combines industrial control hardware and lightweight communicat
 
 This repository is structured as a portfolio-oriented reconstruction of a real engineering project developed during my internship, with the goal of documenting the technical architecture, design decisions, implementation logic, and lessons learned in a professional and accessible way.
 
+![Solution diagram](assets/images/fig-08-solution-diagram.png)
+
 ## Problem Statement
 
 Water pumping and storage stations are often distributed across wide geographical areas and contain critical equipment such as pumps, level sensors, pressure sensors, and chlorine measurement devices. Monitoring these assets only through local systems or in-person inspections limits operational visibility and slows down reaction times when faults occur.
