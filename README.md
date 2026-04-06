@@ -31,12 +31,10 @@ The solution integrates PLC-based data acquisition, LoRaWAN communications, MQTT
 
 ## System Architecture
 
-> Suggested main image location: `assets/images/overview/system-architecture.png`
-
-```md
-![System architecture](assets/images/overview/system-architecture.png)
-*Figure 1. High-level architecture of the remote monitoring solution.*
-```
+<p align="center">
+  <img src="assets/images/overview/system-architecture.png" alt="System architecture" width="500"/>
+</p>
+<p align="center"><em>High-level architecture of the remote monitoring solution.</em></p>
 
 At a high level, the monitored signals are acquired from the industrial control layer, transmitted through a LoRaWAN communication chain, decoded and processed through MQTT and Node-RED, and finally visualized in a cloud dashboard environment.
 
