@@ -6,6 +6,11 @@ This document collects the practical considerations that matter when deploying, 
 
 Unlike the implementation document, which explains how the project was built step by step, this section focuses on what an engineer should keep in mind when moving the architecture into operation: hardware preparation, communication setup, configuration consistency, commissioning checks, and operational constraints.
 
+<p align="center">
+  <img src="../../assets/images/deployment/deployment-overview.png" alt="Deployment overview" width="500"/>
+</p>
+<p align="center"><em>Practical deployment view of the monitoring solution from station hardware to central supervision.</em></p>
+
 This is intentionally written as a **deployment-oriented technical note**, not as a full installation manual.
 
 ---
@@ -24,21 +29,6 @@ It involves coordinating several layers at the same time:
 * ThingSpeak publication and monitoring support
 
 Because of that, deployment should be understood as the process of making the full telemetry chain operational and stable from the station to the central supervision point.
-
----
-
-## Recommended Main Figure
-
-Place this image near the top of the page, after the introductory section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/deployment/deployment-overview.png" alt="Deployment overview" width="950"/>
-</p>
-<p align="center"><em>Figure 1. Practical deployment view of the monitoring solution from station hardware to central supervision.</em></p>
-```
-
----
 
 ## Deployment Scope in the Pilot
 
@@ -138,21 +128,6 @@ This is one of the key practical rules of the whole project:
 
 **if one layer changes its data structure, the dependent layers must be updated as well.**
 
----
-
-## Suggested Station Deployment Figure
-
-Place this image after the station-side section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/deployment/station-installation-checkpoints.png" alt="Station installation checkpoints" width="930"/>
-</p>
-<p align="center"><em>Figure 2. Main station-side checkpoints for PLC, serial module, Dragino, and field signal integration.</em></p>
-```
-
----
-
 ## Dragino Deployment Notes
 
 The Dragino RS485-LN is one of the most sensitive deployment elements because it sits exactly between industrial communications and LoRaWAN telemetry.
@@ -230,21 +205,6 @@ A good deployment habit is to track:
 
 Without this discipline, multi-station maintenance becomes much harder.
 
----
-
-## Suggested LoRaWAN Deployment Figure
-
-Place this image after the gateway and TTN section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/deployment/lorawan-deployment-path.png" alt="LoRaWAN deployment path" width="930"/>
-</p>
-<p align="center"><em>Figure 3. Deployment path from station-side uplink transmission to TTN reception and decoder execution.</em></p>
-```
-
----
-
 ## Central-Side Deployment Notes
 
 ### Orange Pi runtime stability
@@ -309,21 +269,6 @@ A simple but important deployment rule is to keep the same field meaning across 
 For example, if one field is assigned to tank level, that meaning should not later be changed casually to a different variable without versioning or documentation.
 
 This keeps historical analysis interpretable.
-
----
-
-## Suggested Central Monitoring Figure
-
-Place this image after the central-side deployment sections.
-
-```md
-<p align="center">
-  <img src="../../assets/images/deployment/central-monitoring-stack.png" alt="Central monitoring stack" width="930"/>
-</p>
-<p align="center"><em>Figure 4. Central-side deployment stack including Orange Pi, MQTT reception, Node-RED dashboards, and ThingSpeak publication.</em></p>
-```
-
----
 
 ## Commissioning Sequence
 
@@ -422,21 +367,6 @@ Useful artifacts include:
 * Commissioning checklist and test notes
 
 Even if the repository only includes simplified examples, keeping this mindset improves the professional quality of the project.
-
----
-
-## Suggested Final Figure
-
-Place this image near the end of the document, before the conclusion.
-
-```md
-<p align="center">
-  <img src="../../assets/images/deployment/commissioning-sequence.png" alt="Commissioning sequence" width="950"/>
-</p>
-<p align="center"><em>Figure 5. Suggested commissioning and deployment validation sequence for reproducing the monitoring solution.</em></p>
-```
-
----
 
 ## Deployment Best Practices Derived from the Project
 
