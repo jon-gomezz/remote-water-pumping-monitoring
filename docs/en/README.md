@@ -3,7 +3,7 @@
 ## Overview
 
 <p align="center">
-  <img src="../../assets/images/overview/system-architecture.png" alt="System architecture" width="900"/>
+  <img src="../../assets/images/overview/system-architecture.png" alt="System architecture" width="500"/>
 </p>
 <p align="center"><em>Figure 1. High-level architecture of the remote water pumping monitoring system.</em></p>
 
