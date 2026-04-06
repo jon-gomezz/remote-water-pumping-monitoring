@@ -135,7 +135,7 @@ Por ello, parte del contenido puede aparecer condensado, reorganizado o simplifi
 ## Navegación
 
 * Volver al [README raíz del repositorio](/README.md)
-* Cambiar a la [documentación en inglés](docs/en/README.md)
+* Cambiar a la [documentación en inglés](/docs/en/README.md)
 
 ---
 
