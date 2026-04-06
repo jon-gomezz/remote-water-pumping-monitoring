@@ -395,12 +395,12 @@ Eso hace que los resultados sean sólidos, creíbles y muy adecuados para un por
 
 Después de los resultados de validación, el siguiente documento debe centrarse en notas operativas prácticas, consideraciones de despliegue y detalles de implementación útiles para reproducir o ampliar el sistema.
 
-Continúa con: [`deployment-notes.md`](deployment-notes.md)
+Continúa con: [`notas-de-despliegue.md`](notas-de-despliegue.md)
 
 ---
 
 ## Navegación
 
 * Volver al [índice de documentación en castellano](README.md)
-* Volver a [Implementación](data-flow.md)
-* Cambiar a la [versió
+* Volver a [flujo de datos](flujo-de-datos.md)
+* Cambiar a la [versión en inglés](/docs/en/validation-and-results.md)
