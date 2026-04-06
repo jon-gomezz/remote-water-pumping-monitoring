@@ -10,26 +10,16 @@ In a portfolio project like this one, the data flow is one of the most important
 
 ## High-Level Data Flow Summary
 
+<p align="center">
+  <img src="../../assets/images/data-flow/end-to-end-data-flow.png" alt="End-to-end data flow" width="500"/>
+</p>
+<p align="center"><em>End-to-end data flow from field acquisition to centralized visualization and storage.</em></p>
+
 At a high level, the project follows this logic:
 
 **field signals → PLC data blocks → Modbus RTU polling → Dragino payload generation → LoRaWAN uplink → TTN reception → payload decoding → MQTT delivery → Node-RED routing → ThingSpeak storage and analysis**
 
 This chain turns scattered station variables into a centralized monitoring stream that can be visualized and analyzed remotely.
-
----
-
-## Recommended Main Figure
-
-This image should appear near the top of the page, just after the high-level summary.
-
-```md
-<p align="center">
-  <img src="../../assets/images/data-flow/end-to-end-data-flow.png" alt="End-to-end data flow" width="950"/>
-</p>
-<p align="center"><em>Figure 1. End-to-end data flow from field acquisition to centralized visualization and storage.</em></p>
-```
-
----
 
 ## What the Flow Needs to Achieve
 
@@ -143,19 +133,6 @@ This means the flow is standardized at structure level, but still flexible enoug
 
 ---
 
-## Suggested Data-Format Figure
-
-Place this image after the PLC data structuring section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/data-flow/plc-data-block-structure.png" alt="PLC data block structure" width="900"/>
-</p>
-<p align="center"><em>Figure 2. Example of the PLC-side word and bit organization used to standardize station data.</em></p>
-```
-
----
-
 ## Step 3. Modbus RTU Polling Between Dragino and PLC
 
 Once the PLC data is organized, the Dragino RS485-LN retrieves it through **Modbus RTU** over **RS-485**.
@@ -224,21 +201,6 @@ So the full flow is tightly linked across layers:
 
 The project works well because those stages were designed together rather than independently.
 
----
-
-## Suggested Payload Figure
-
-Place this image after the payload design section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/data-flow/payload-byte-mapping.png" alt="Payload byte mapping" width="900"/>
-</p>
-<p align="center"><em>Figure 3. Example of how selected PLC values are compacted into a LoRaWAN payload.</em></p>
-```
-
----
-
 ## Step 5. LoRaWAN Uplink to TTN
 
 Once the payload has been created, the Dragino transmits it through **LoRaWAN**.
@@ -292,22 +254,12 @@ A typical decoder:
 * Scales analog values to engineering meaning when needed
 * Returns the result as a decoded payload object
 
-That decoded payload then becomes the main input for Node-RED processing.
-
----
-
-## Suggested TTN Decoder Figure
-
-Place this image after the TTN decoding section.
-
-```md
 <p align="center">
-  <img src="../../assets/images/data-flow/ttn-payload-decoder.png" alt="TTN payload decoder" width="900"/>
+  <img src="../../assets/images/data-flow/ttn-payload-decoder.png" alt="TTN payload decoder" width="500"/>
 </p>
-<p align="center"><em>Figure 4. Payload decoding logic in TTN used to transform raw bytes into readable variables.</em></p>
-```
+<p align="center"><em>Payload decoding logic in TTN used to transform raw bytes into readable variables.</em></p>
 
----
+That decoded payload then becomes the main input for Node-RED processing.
 
 ## Step 7. MQTT Delivery to Node-RED
 
@@ -365,6 +317,11 @@ At this point, the system is no longer dealing with transport. It is dealing wit
 * Routes each value to the correct output
 * Updates the station dashboard in near real time
 
+<p align="center">
+  <img src="../../assets/images/data-flow/node-red-routing-flow.png" alt="Node-RED routing flow" width="500"/>
+</p>
+<p align="center"><em>Node-RED flow used to extract decoded payload values and route them to dashboard widgets.</em></p>
+
 This stage is what turns incoming telemetry into usable supervision.
 
 ---
@@ -386,21 +343,6 @@ It becomes:
 * The operational entry point for centralized monitoring
 
 This is a strong engineering story for the portfolio because it shows adaptation to real deployment constraints.
-
----
-
-## Suggested Node-RED Figure
-
-Place this image after the Node-RED routing section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/data-flow/node-red-routing-flow.png" alt="Node-RED routing flow" width="900"/>
-</p>
-<p align="center"><em>Figure 5. Node-RED flow used to extract decoded payload values and route them to dashboard widgets.</em></p>
-```
-
----
 
 ## Step 9. Dashboard Visualization
 
@@ -443,21 +385,6 @@ This creates a second consumption path for the same telemetry.
 * Alarm and notification possibilities
 
 This is an important architectural strength because the project does not depend on a single end platform. It separates short-term operational visualization from longer-term storage and analysis.
-
----
-
-## Suggested ThingSpeak Figure
-
-Place this image after the ThingSpeak section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/data-flow/thingspeak-channel-view.png" alt="ThingSpeak channel view" width="900"/>
-</p>
-<p align="center"><em>Figure 6. Example of the ThingSpeak storage and visualization layer used for historical analysis.</em></p>
-```
-
----
 
 ## Refresh Behavior and Monitoring Rhythm
 
@@ -532,21 +459,6 @@ Relevant trade-offs include:
 * Security hardening can be expanded in future iterations, especially around public-network usage and application-layer protections
 
 These limitations do not weaken the project. They make the explanation more credible.
-
----
-
-## Suggested Final Visual
-
-Place this figure near the end of the document, before the conclusion.
-
-```md
-<p align="center">
-  <img src="../../assets/images/data-flow/multi-station-routing-pattern.png" alt="Multi-station routing pattern" width="950"/>
-</p>
-<p align="center"><em>Figure 7. Repeatable multi-station data-flow pattern from local acquisition to centralized supervision.</em></p>
-```
-
----
 
 ## Conclusion
 
