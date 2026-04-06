@@ -42,7 +42,7 @@ Esta documentación en castellano está organizada como un paquete técnico de p
 
 ### 1. Resumen del proyecto
 
-Archivo: [`project-overview.md`](project-overview.md)
+Archivo: [`descripcion-del-proyecto.md`](descripcion-del-proyecto.md)
 
 Describe el contexto industrial, el problema que se aborda, los objetivos del proyecto y el alcance previsto de la solución de monitorización.
 
