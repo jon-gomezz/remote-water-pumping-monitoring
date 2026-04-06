@@ -25,21 +25,10 @@ The validation therefore focused on proving that the following chain worked reli
 * Payload decoding and message delivery
 * Node-RED dashboard monitoring in Araka
 * ThingSpeak-based storage and analysis
-
----
-
-## Recommended Main Figure
-
-Place this image near the top of the page, after the validation philosophy section.
-
-```md
 <p align="center">
-  <img src="../../assets/images/validation/pilot-validation-scope.png" alt="Pilot validation scope" width="950"/>
+  <img src="../../assets/images/validation/pilot-validation-scope.png" alt="Pilot validation scope" width="500"/>
 </p>
-<p align="center"><em>Figure 1. Validation scope of the pilot, centered on Mandojana station and the central monitoring environment in Araka.</em></p>
-```
-
----
+<p align="center"><em>Validation scope of the pilot, centered on Mandojana station and the central monitoring environment in Araka.</em></p>
 
 ## Pilot Validation Context
 
@@ -223,6 +212,11 @@ The Node-RED layer demonstrated that it could:
 * Provide real-time dashboards
 * Support station-level visibility in a form that operators can use quickly
 
+<p align="center">
+  <img src="../../assets/images/validation/node-red-pilot-dashboard.png" alt="Node-RED pilot dashboard" width="900"/>
+</p>
+<p align="center"><em>Pilot dashboard used in Araka to supervise the incoming telemetry from the validated station setup.</em></p>
+
 From a portfolio point of view, this is one of the most valuable outcomes, because it shows that the project adapted to real infrastructure constraints without losing functionality.
 
 ---
@@ -266,22 +260,7 @@ By publishing processed values to ThingSpeak, the project gained:
 * Additional analysis capabilities
 * A path toward alarms and event-oriented monitoring
 
-This means the pilot was not limited to instantaneous telemetry display. It also established a foundation for deeper operational analysis.
-
----
-
-## Suggested Dashboard Result Figure
-
-Place this image after the Node-RED result section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/validation/node-red-pilot-dashboard.png" alt="Node-RED pilot dashboard" width="920"/>
-</p>
-<p align="center"><em>Figure 2. Pilot dashboard used in Araka to supervise the incoming telemetry from the validated station setup.</em></p>
-```
-
----
+This means the pilot was not limited to instantaneous telemetry display. It also established a foundation for deeper operational analysis.  
 
 ## Station-Level Result Example
 
@@ -393,34 +372,6 @@ Relevant next-step concerns include:
 * Deeper alarm logic, analytics, and maintenance-oriented automation
 
 These are not signs of project weakness. They are natural next steps after a successful pilot.
-
----
-
-## Suggested ThingSpeak Result Figure
-
-Place this image after the ThingSpeak result section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/validation/thingspeak-trends-and-alerts.png" alt="ThingSpeak trends and alerts" width="920"/>
-</p>
-<p align="center"><em>Figure 3. Example of the historical visualization and alert-oriented analysis enabled by the ThingSpeak integration.</em></p>
-```
-
----
-
-## Suggested Requirement-Validation Matrix Figure
-
-Place this image near the end of the document, before the conclusion.
-
-```md
-<p align="center">
-  <img src="../../assets/images/validation/requirement-validation-matrix.png" alt="Requirement validation matrix" width="950"/>
-</p>
-<p align="center"><em>Figure 4. Summary view of how the pilot results relate to the original system design requirements.</em></p>
-```
-
----
 
 ## Conclusion
 
