@@ -384,3 +384,8 @@ Continúa con: [`data-flow.md`](data-flow.md)
 ---
 
 ## Navegación
+
+
+* Volver al [índice de documentación en castellano](README.md)
+* Volver a [Arquitectura](architecture.md)
+* Cambiar a la [versión en inglés](../en/hardware-and-communications.md)
