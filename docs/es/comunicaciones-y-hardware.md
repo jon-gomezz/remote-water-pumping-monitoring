@@ -379,7 +379,7 @@ Esa combinación es la que da valor técnico al proyecto: no es solo un concepto
 
 Una vez entendida la pila hardware y de comunicaciones, el siguiente paso es describir cómo se mueve realmente la información a través del sistema.
 
-Continúa con: [`data-flow.md`](data-flow.md)
+Continúa con: [`flujo-de-datos.md`](flujo-de-datos.md)
 
 ---
 
@@ -387,5 +387,5 @@ Continúa con: [`data-flow.md`](data-flow.md)
 
 
 * Volver al [índice de documentación en castellano](README.md)
-* Volver a [Arquitectura](architecture.md)
-* Cambiar a la [versión en inglés](../en/hardware-and-communications.md)
+* Volver a [Arquitectura](arquitectura.md)
+* Cambiar a la [versión en inglés](/docs/en/hardware-and-communications.md)
