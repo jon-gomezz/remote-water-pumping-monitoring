@@ -425,5 +425,5 @@ Estas lecciones van más allá de este proyecto concreto. También son principio
 ## Navegación
 
 * Volver al [índice de documentación en castellano](README.md)
-* Volver a [Notas de despliegue](deployment-notes.md)
-* Cambiar a la [versión en inglés](../en/lessons-learned.md)
+* Volver a [Notas de despliegue](notas-de-despliegue.md)
+* Cambiar a la [versión en inglés](/docs/en/lessons-learned.md)
