@@ -484,12 +484,12 @@ Esa lógica de extremo a extremo es una de las principales razones por las que e
 
 Una vez entendido cómo se mueve la información a través del sistema, el siguiente paso lógico es documentar cómo se probó el piloto y qué resultados se observaron.
 
-Continúa con: [`validation-and-results.md`](validation-and-results.md)
+Continúa con: [`validacion-y-resultados.md`](validacion-y-resultados.md)
 
 ---
 
 ## Navegación
 
 * Volver al [índice de documentación en castellano](README.md)
-* Volver a [Hardware y comunicaciones](hardware-and-communications.md)
-* Cambiar a la [versión en inglés](../en/data-flow.md)
+* Volver a [Hardware y comunicaciones](comunicaciones-y-hardware.md)
+* Cambiar a la [versión en inglés](/docs/en/data-flow.md)
