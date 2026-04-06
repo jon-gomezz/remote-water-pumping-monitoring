@@ -74,6 +74,11 @@ The scope of the project includes the design and integration of an end-to-end mo
 * **Processing layer:** data decoding, transformation, and routing through MQTT and Node-RED
 * **Visualization and storage layer:** dashboard display and cloud data storage through ThingSpeak
 
+<p align="center">
+  <img src="../../assets/images/overview/system-architecture.png" alt="High-level monitoring architecture" width="400"/>
+</p>
+<p align="center"><em>High-level architecture of the remote monitoring solution.</em></p>
+
 This repository focuses on the monitoring architecture and integration logic rather than on reproducing the full academic report.
 
 ---
