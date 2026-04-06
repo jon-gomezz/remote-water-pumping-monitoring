@@ -14,6 +14,11 @@ At a high level, the system follows this chain:
 
 **Pumping station signals → Siemens PLC → RS-485 / Modbus → Dragino RS485-LN → LoRaWAN → TTIG gateway → TTN → MQTT → Node-RED in Araka → ThingSpeak**
 
+<p align="center">
+  <img src="../../assets/images/architecture/system-architecture.png" alt="System architecture" width="500"/>
+</p>
+<p align="center"><em>End-to-end architecture of the remote water pumping monitoring system.</em></p>
+
 This architecture transforms field-level operational data into remotely accessible monitoring dashboards and cloud-stored telemetry.
 
 ---
