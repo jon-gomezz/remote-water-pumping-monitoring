@@ -21,21 +21,6 @@ At a high level, the system follows this chain:
 
 This architecture transforms field-level operational data into remotely accessible monitoring dashboards and cloud-stored telemetry.
 
----
-
-## Recommended Main Figure
-
-This image should appear near the top of the page, immediately after the architectural summary.
-
-```md
-<p align="center">
-  <img src="../../assets/images/architecture/system-architecture.png" alt="System architecture" width="900"/>
-</p>
-<p align="center"><em>Figure 1. End-to-end architecture of the remote water pumping monitoring system.</em></p>
-```
-
----
-
 ## Why This Architecture Was Chosen
 
 The system architecture was shaped by a set of practical design requirements:
@@ -144,6 +129,11 @@ This creates a two-level consumption model:
 
 ## End-to-End Data Path
 
+<p align="center">
+  <img src="../../assets/images/architecture/functional-blocks.png" alt="Functional blocks" width="500"/>
+</p>
+<p align="center"><em>Functional decomposition of the architecture from field acquisition to cloud visualization.</em></p>
+
 The complete architectural flow can be described step by step:
 
 1. Process variables are read at the pumping station.
@@ -162,15 +152,6 @@ The complete architectural flow can be described step by step:
 
 ## Architecture Diagram by Functional Blocks
 
-This figure can be placed after the end-to-end data path section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/architecture/functional-blocks.png" alt="Functional blocks" width="900"/>
-</p>
-<p align="center"><em>Figure 2. Functional decomposition of the architecture from field acquisition to cloud visualization.</em></p>
-```
-
 A useful way to explain the system in interviews is to group the architecture into the following functional blocks:
 
 * **Acquisition block:** PLC + local signals
@@ -186,6 +167,11 @@ This framing makes the architecture easier to communicate than describing it onl
 
 ## Why a LoRaWAN Network Server Architecture Instead of Simpler LoRa Modes
 
+<p align="center">
+  <img src="../../assets/images/architecture/lorawan-network-options.png" alt="LoRaWAN network options" width="500"/>
+</p>
+<p align="center"><em>Comparison of LoRa connectivity approaches considered during the architectural design.</em></p>
+
 The original design space included different LoRa connectivity models, such as point-to-point, point-to-multipoint, a gateway with an embedded network server, and a LoRaWAN network with an independent network server.
 
 For this project, the independent network server approach was the most suitable because it offers:
@@ -200,6 +186,11 @@ That choice fits the project better than direct LoRa links because the main goal
 ---
 
 ## Why Node-RED Was Architecturally Important
+
+<p align="center">
+  <img src="../../assets/images/architecture/node-red-dashboard-flow.png" alt="Node-RED dashboard flow" width="500"/>
+</p>
+<p align="center"><em>Node-RED as the processing and visualization layer in the central monitoring environment.</em></p>
 
 Node-RED is not just a dashboard tool in this project. It is an integration layer.
 
@@ -298,45 +289,6 @@ Some relevant limitations are:
 * Cybersecurity hardening can be expanded significantly in future iterations
 
 Mentioning these limits improves the credibility of the portfolio because it shows engineering judgment rather than overselling the solution.
-
----
-
-## Suggested Additional Visuals
-
-### 1. LoRaWAN network options comparison
-
-Place this image after the section about choosing the independent network server architecture.
-
-```md
-<p align="center">
-  <img src="../../assets/images/architecture/lorawan-network-options.png" alt="LoRaWAN network options" width="850"/>
-</p>
-<p align="center"><em>Figure 3. Comparison of LoRa connectivity approaches considered during the architectural design.</em></p>
-```
-
-### 2. Node-RED dashboard architecture role
-
-Place this image after the Node-RED section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/architecture/node-red-dashboard-flow.png" alt="Node-RED dashboard role" width="900"/>
-</p>
-<p align="center"><em>Figure 4. Node-RED as the processing and visualization layer in the central monitoring environment.</em></p>
-```
-
-### 3. Station-to-central repeatable pattern
-
-Place this image near the end of the document, before the conclusion.
-
-```md
-<p align="center">
-  <img src="../../assets/images/architecture/station-pattern.png" alt="Repeatable station pattern" width="900"/>
-</p>
-<p align="center"><em>Figure 5. Repeatable architecture pattern for scaling the solution to multiple pumping stations.</em></p>
-```
-
----
 
 ## Conclusion
 
