@@ -5,7 +5,7 @@
 <p align="center">
   <img src="../../assets/images/overview/system-architecture.png" alt="System architecture" width="500"/>
 </p>
-<p align="center"><em>Figure 1. High-level architecture of the remote water pumping monitoring system.</em></p>
+<p align="center"><em>High-level architecture of the remote water pumping monitoring system.</em></p>
 
 This section contains the full English documentation for a technical portfolio project based on a real industrial internship case involving the remote monitoring of water pumping stations.
 
