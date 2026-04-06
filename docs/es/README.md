@@ -5,7 +5,7 @@
 Esta sección contiene la documentación completa en castellano de un proyecto técnico de portfolio basado en un caso real de prácticas industriales centrado en la monitorización remota de estaciones de bombeo de agua.
 
 <p align="center">
-  <img src="/assets/images/readme/system-architecture.png" alt="Arquitectura del sistema" width="400"><br>
+  <img src="../../assets/images/overview/system-architecture.png" alt="System architecture" width="500"/><br>
   <em>Arquitectura de alto nivel del sistema de monitorización remota de estaciones de bombeo de agua.</em>
 </p>
 
