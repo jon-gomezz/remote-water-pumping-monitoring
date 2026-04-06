@@ -110,6 +110,11 @@ Although the architecture was conceived for broader deployment, the practical va
 
 The solution was tested in the pumping station of Mandojana and in the water storage facilities of Araka. This pilot stage served to verify that the proposed architecture was technically valid and functionally feasible before a wider rollout to additional stations.
 
+<p align="center">
+  <img src="../../assets/images/overview/pilot-sites.png" alt="Pilot validation sites" width="500"/>
+</p>
+<p align="center"><em>Pilot validation context in Mandojana and Araka.</em></p>
+
 This is an important point in the portfolio version of the project: the emphasis is not on claiming a full production deployment, but on demonstrating a technically sound pilot with clear expansion potential.
 
 ---
