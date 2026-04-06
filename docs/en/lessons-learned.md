@@ -18,21 +18,6 @@ The most useful lessons did not come from theory alone. They came from implement
 
 That is why this section focuses on lessons that would still matter if the system were extended to more stations or redesigned for a more production-oriented deployment.
 
----
-
-## Recommended Main Figure
-
-Place this image near the top of the page, after the introduction.
-
-```md
-<p align="center">
-  <img src="../../assets/images/lessons-learned/engineering-lessons-overview.png" alt="Engineering lessons overview" width="950"/>
-</p>
-<p align="center"><em>Figure 1. Summary view of the main technical lessons learned during the design, implementation, and pilot validation of the monitoring solution.</em></p>
-```
-
----
-
 ## Lesson 1. A Good Industrial IoT Solution Starts with Clear Problem Framing
 
 One of the strongest lessons from the project is that the technical stack only makes sense when the operational problem is clearly defined first.
@@ -133,21 +118,6 @@ Most integration failures do not come from one dramatic error. They come from sm
 
 For that reason, successful OT/IoT projects require strong configuration discipline and clear interface definitions.
 
----
-
-## Suggested Data-Alignment Figure
-
-Place this image after Lesson 4.
-
-```md
-<p align="center">
-  <img src="../../assets/images/lessons-learned/data-alignment-chain.png" alt="Data alignment chain" width="930"/>
-</p>
-<p align="center"><em>Figure 2. Alignment dependency between PLC structure, Modbus addressing, payload definition, decoder logic, and dashboard mapping.</em></p>
-```
-
----
-
 ## Lesson 5. Prototyping in Isolated Steps Saves Time Later
 
 Another major lesson is the practical value of staged validation.
@@ -220,21 +190,6 @@ Node-RED worked well because the goal was supervisory monitoring, fast iteration
 ### Main takeaway
 
 Tool selection should depend on the operational role of the system, not only on whether the tool looks “industrial” enough at first glance.
-
----
-
-## Suggested Node-RED Role Figure
-
-Place this image after Lesson 7.
-
-```md
-<p align="center">
-  <img src="../../assets/images/lessons-learned/node-red-central-role.png" alt="Node-RED central role" width="930"/>
-</p>
-<p align="center"><em>Figure 3. Node-RED as a central integration layer rather than only a dashboarding tool.</em></p>
-```
-
----
 
 ## Lesson 8. LoRaWAN Is Well Suited to Supervisory Monitoring, Not Everything
 
@@ -365,21 +320,6 @@ It means that expansion can be approached by reusing:
 
 In industrial portfolio projects, showing that a pattern can be repeated is often more valuable than showing excessive optimization for a single site.
 
----
-
-## Suggested Repeatability Figure
-
-Place this image after Lesson 12.
-
-```md
-<p align="center">
-  <img src="../../assets/images/lessons-learned/repeatable-station-pattern.png" alt="Repeatable station pattern" width="940"/>
-</p>
-<p align="center"><em>Figure 4. Repeatable station-to-central design pattern derived from the pilot architecture.</em></p>
-```
-
----
-
 ## Design Trade-Offs That Became Clear
 
 The project also made several trade-offs more visible.
@@ -445,21 +385,6 @@ Review the communication and access model more deeply if the system moves toward
 Extend the monitoring layer with richer event detection, historical insight, and maintenance-oriented alerting.
 
 These are natural next steps after a successful pilot.
-
----
-
-## Suggested Improvement Roadmap Figure
-
-Place this image near the end of the document, before the conclusion.
-
-```md
-<p align="center">
-  <img src="../../assets/images/lessons-learned/next-iteration-roadmap.png" alt="Next iteration roadmap" width="950"/>
-</p>
-<p align="center"><em>Figure 5. Main improvement directions identified after the pilot validation of the monitoring system.</em></p>
-```
-
----
 
 ## Final Reflection
 
