@@ -302,12 +302,12 @@ Su valor de ingeniería no proviene del uso aislado de una sola tecnología, sin
 
 Después de la arquitectura, el siguiente documento debe explicar con más detalle los dispositivos, interfaces y decisiones de protocolo.
 
-Continúa con: [`hardware-and-communications.md`](hardware-and-communications.md)
+Continúa con: [`comunicaciones-y-hardware.md`](comunicaciones-y-hardware.md)
 
 ---
 
 ## Navegación
 
 * Volver al [índice de documentación en castellano](README.md)
-* Volver a [Resumen del proyecto](project-overview.md)
-* Cambiar a la [versión en inglés](../en/architecture.md)
+* Volver a [Resumen del proyecto](descripcion-del-proyecto.md)
+* Cambiar a la [versión en inglés](/docs/en/architecture.md)
