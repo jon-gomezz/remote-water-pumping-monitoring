@@ -35,24 +35,14 @@ The main hardware building blocks are:
 
 These devices are connected through a communication chain that links industrial control, serial data exchange, wireless telemetry, and application-layer monitoring.
 
----
-
-## Recommended Introductory Figure
-
-Place this figure near the top of the page, after the hardware overview.
-
-```md
-<p align="center">
-  <img src="../../assets/images/hardware/hardware-stack-overview.png" alt="Hardware stack overview" width="900"/>
-</p>
-<p align="center"><em>Figure 1. Main hardware components used in the station-side and central-side monitoring setup.</em></p>
-```
-
----
-
 ## Station-Side Hardware
 
 ### Siemens S7-1214C PLC
+
+<p align="center">
+  <img src="../../assets/images/hardware/plc-wiring-mandojana.png" alt="PLC wiring diagram" width="900"/>
+</p>
+<p align="center"><em>Example PLC-side wiring and module arrangement used in the Mandojana station setup.</em></p>
 
 The Siemens S7-1214C acts as the main industrial acquisition and control device at each pumping station.
 
@@ -114,6 +104,11 @@ For this project, RS-485 was suitable because:
 ## Telemetry Conversion Hardware
 
 ### Dragino RS485-LN
+
+<p align="center">
+  <img src="../../assets/images/hardware/dragino-installation.png" alt="Dragino installation" width="500"/>
+</p>
+<p align="center"><em>Hardware installation and RS-485 connection approach for the Dragino RS485-LN module.</em></p>
 
 The **Dragino RS485-LN** is one of the most important components in the project because it performs the conversion from industrial serial communication to LoRaWAN telemetry.
 
@@ -208,6 +203,11 @@ At some stations, additional I/O capacity may also be required depending on the 
 ---
 
 ## Communication Stack Overview
+
+<p align="center">
+  <img src="../../assets/images/hardware/lorawan-elements-project-context.png" alt="LoRaWAN elements" width="500"/>
+</p>
+<p align="center"><em>Mapping of end devices, gateway, network server, and application layer within the project.</em></p>
 
 The communication stack of the project can be summarized as follows:
 
@@ -364,56 +364,6 @@ Relevant limitations include:
 * The solution is designed for monitoring and supervisory visibility, not for fast closed-loop control
 * Public-network dependence at the network-server level may not be ideal for a hardened production environment
 * Security hardening can be expanded significantly in future iterations
-
----
-
-## Suggested Visuals for This Page
-
-### 1. PLC and communication module wiring diagram
-
-Place this image after the Siemens PLC section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/hardware/plc-wiring-mandojana.png" alt="PLC wiring diagram" width="900"/>
-</p>
-<p align="center"><em>Figure 2. Example PLC-side wiring and module arrangement used in the Mandojana station setup.</em></p>
-```
-
-### 2. Dragino hardware installation and RS-485 connection
-
-Place this image after the Dragino RS485-LN section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/hardware/dragino-installation.png" alt="Dragino installation" width="850"/>
-</p>
-<p align="center"><em>Figure 3. Hardware installation and RS-485 connection approach for the Dragino RS485-LN module.</em></p>
-```
-
-### 3. LoRaWAN element mapping diagram
-
-Place this image after the communication stack overview.
-
-```md
-<p align="center">
-  <img src="../../assets/images/hardware/lorawan-elements-project-context.png" alt="LoRaWAN elements" width="900"/>
-</p>
-<p align="center"><em>Figure 4. Mapping of end devices, gateway, network server, and application layer within the project.</em></p>
-```
-
-### 4. Node-RED dashboard programming screenshot
-
-Place this image near the end of the document, in the monitoring layer section.
-
-```md
-<p align="center">
-  <img src="../../assets/images/hardware/node-red-programming.png" alt="Node-RED programming" width="900"/>
-</p>
-<p align="center"><em>Figure 5. Example of the Node-RED flow used to decode and route incoming station telemetry.</em></p>
-```
-
----
 
 ## Conclusion
 
