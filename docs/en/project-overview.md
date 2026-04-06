@@ -11,7 +11,7 @@ The result is a practical monitoring solution that combines industrial automatio
 <p align="center">
   <img src="../../assets/images/overview/monitored-stations-overview.png" alt="Monitored stations overview" width="500"/>
 </p>
-<p align="center"><em>General context of the distributed pumping stations considered in the project.</em></p>****
+<p align="center"><em>General context of the distributed pumping stations considered in the project.</em></p>
 
 ---
 
