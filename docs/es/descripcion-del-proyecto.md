@@ -165,12 +165,12 @@ Como proyecto de portfolio, este trabajo demuestra varias capacidades de ingenie
 
 Una vez entendido el contexto y el alcance del proyecto, el siguiente paso es examinar en detalle la arquitectura del sistema.
 
-Continúa con: [`architecture.md`](architecture.md)
+Continúa con: [`architecture.md`](arquitectura.md)
 
 ---
 
 ## Navegación
 
 * Volver al [índice de documentación en castellano](README.md)
-* Volver al [README raíz del repositorio](../../README.md)
-* Cambiar a la [versión en inglés](../en/project-overview.md)
+* Volver al [README raíz del repositorio](/README.md)
+* Cambiar a la [versión en inglés](/docs/en/project-overview.md)
