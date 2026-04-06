@@ -161,39 +161,6 @@ As a portfolio project, this work demonstrates several engineering capabilities:
 * translating field requirements into an end-to-end monitoring solution
 * documenting technical work in a concise and professional way
 
----
-
-## Suggested Visuals for This Page
-
-### 1. System context image
-
-Suggested location near the top of the document, after the introduction.
-
-```md
-![Monitored stations overview](../../assets/images/overview/monitored-stations-overview.png)
-*Figure 1. General context of the distributed pumping stations considered in the project.*
-```
-
-### 2. High-level architecture image
-
-Suggested location after the “Scope of the Solution” section.
-
-```md
-![High-level monitoring architecture](../../assets/images/overview/system-architecture.png)
-*Figure 2. High-level architecture of the remote monitoring solution.*
-```
-
-### 3. Pilot validation image
-
-Suggested location after the “Pilot Validation Context” section.
-
-```md
-![Pilot validation sites](../../assets/images/overview/pilot-sites.png)
-*Figure 3. Pilot validation context in Mandojana and Araka.*
-```
-
----
-
 ## What Comes Next
 
 After understanding the project context and scope, the next step is to examine the system architecture in detail.
