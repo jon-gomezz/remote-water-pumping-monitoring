@@ -404,12 +404,12 @@ Eso es lo que convierte la arquitectura en un sistema operativo de monitorizaci�
 
 Después de las notas de despliegue, el último documento debería centrarse en las reflexiones de ingeniería, los compromisos de diseño y las posibles mejoras futuras.
 
-Continúa con: [`lessons-learned.md`](lessons-learned.md)
+Continúa con: [`lecciones-aprendidas.md`](lecciones-aprendidas.md)
 
 ---
 
 ## Navegación
 
 * Volver al [índice de documentación en castellano](README.md)
-* Volver a [Validación y resultados](validation-and-results.md)
-* Cambiar a la [versión en inglés](../en/deployment-notes.md)
+* Volver a [Validación y resultados](validacion-y-resultados.md)
+* Cambiar a la [versión en inglés](docs/en/deployment-notes.md)
