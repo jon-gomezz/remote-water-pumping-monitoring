@@ -48,37 +48,37 @@ Describe el contexto industrial, el problema que se aborda, los objetivos del pr
 
 ### 2. Arquitectura
 
-Archivo: [`architecture.md`](architecture.md)
+Archivo: [`arquitectura.md`](arquitectura.md)
 
 Explica la arquitectura de alto nivel del sistema, el papel de cada subsistema y la cadena de comunicación de extremo a extremo desde la capa de campo hasta la capa de visualización.
 
 ### 3. Hardware y comunicaciones
 
-Archivo: [`hardware-and-communications.md`](hardware-and-communications.md)
+Archivo: [`comunicaciones-y-hardware.md`](comunicaciones-y-hardware.md)
 
 Resume los principales elementos hardware, las interfaces de comunicación y las decisiones de protocolo empleadas en el proyecto.
 
 ### 4. Flujo de datos
 
-Archivo: [`data-flow.md`](data-flow.md)
+Archivo: [`flujo-de-datos.md`](flujo-de-datos.md)
 
 Describe cómo las variables de proceso se adquieren, codifican, transmiten, decodifican, procesan y, finalmente, se publican en dashboards de monitorización.
 
 ### 5. Validación y resultados
 
-Archivo: [`validation-and-results.md`](validation-and-results.md)
+Archivo: [`validacion-y-resultados.md`](validacion-y-resultados.md)
 
 Presenta cómo se probó la solución, qué resultados se observaron y qué conclusiones técnicas pueden extraerse de la fase de validación.
 
 ### 6. Notas de despliegue
 
-Archivo: [`deployment-notes.md`](deployment-notes.md)
+Archivo: [`notas-de-despliegue.md`](notas-de-despliegue.md)
 
 Recoge notas operativas, guía de configuración, consideraciones de integración y observaciones útiles para el despliegue.
 
 ### 7. Lecciones aprendidas
 
-Archivo: [`lessons-learned.md`](lessons-learned.md)
+Archivo: [`lecciones-aprendidas.md`](lecciones-aprendidas.md)
 
 Destaca reflexiones de ingeniería, compromisos de diseño, limitaciones del sistema y posibles siguientes pasos de mejora.
 
